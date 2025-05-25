@@ -1,9 +1,5 @@
 package com.microservico_java.mini_spotify.controller;
 
-import com.microservico_java.mini_spotify.dto.PlaylistRequestDTO;
-import com.microservico_java.mini_spotify.model.Playlist;
-import com.microservico_java.mini_spotify.service.PlaylistService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
