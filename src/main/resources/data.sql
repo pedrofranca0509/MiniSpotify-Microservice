@@ -8,6 +8,6 @@ INSERT INTO usuario (id, email, senha) VALUES
 (1, 'usuario@teste.com', 'senha123');
 
 -- Use ID NULL para que o Hibernate gere os IDs automaticamente
-INSERT INTO playlist (id, nome, usuario_id) VALUES
-(NULL, 'Rock Classico', 1),
-(NULL, 'Pop Internacional', 1);
+INSERT INTO playlist (nome, usuario_id) VALUES
+('Rock Classico', 1),
+('Pop Internacional', 1);

@@ -10,13 +10,16 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-                .csrf(csrf -> csrf.disable())
+        return http
                 .authorizeHttpRequests(auth -> auth
-                        .anyRequest().permitAll()
-                );
-        return http.build();
+                        .requestMatchers("/h2-console/**").permitAll() // permite acesso ao H2 Console
+                        .anyRequest().permitAll() // permite todas as outras rotas
+                )
+                .csrf(csrf -> csrf.disable()) // desativa CSRF
+                .headers(headers -> headers.disable()) // desativa todos os headers de segurança (libera uso de <iframe>)
+                .build();
     }
 }

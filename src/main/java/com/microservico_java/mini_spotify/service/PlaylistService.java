@@ -17,7 +17,7 @@ public class PlaylistService {
     private final UsuarioRepository usuarioRepository;
     private final MusicaRepository musicaRepository;
 
-    // No seu PlaylistService.java, modifique o método:
+    // No seu PlaylistService.java, modifique o metodo:
     public Playlist criarPlaylist(PlaylistRequestDTO request) {
         // Adicione tratamento de erro:
         try {
