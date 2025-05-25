@@ -1,5 +1,6 @@
 package com.microservico_java.mini_spotify.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import java.util.Set;
@@ -15,6 +16,7 @@ public class Playlist {
 
     @ManyToOne
     @JoinColumn(name = "usuario_id")
+    @JsonBackReference
     private Usuario usuario;
 
     @ManyToMany

@@ -1,5 +1,6 @@
 package com.microservico_java.mini_spotify.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.Data;
@@ -19,5 +20,6 @@ public class Usuario {
     private String senha; // (Criptografar com BCrypt!)
 
     @OneToMany(mappedBy = "usuario")
+    @JsonManagedReference
     private List<Playlist> playlists = new ArrayList<>();
 }
