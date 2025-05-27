@@ -1,3 +1,4 @@
+
 package com.microservico_java.mini_spotify;
 
 import org.springframework.boot.SpringApplication;
