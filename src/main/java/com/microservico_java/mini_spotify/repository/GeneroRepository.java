@@ -1,6 +1,5 @@
 package com.microservico_java.mini_spotify.repository;
 
-
 import com.microservico_java.mini_spotify.model.Genero;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

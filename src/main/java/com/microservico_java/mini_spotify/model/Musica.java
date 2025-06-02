@@ -20,6 +20,9 @@ public class Musica {
     @JoinColumn(name = "album_id")
     private Album album;
 
+    @Column(name = "artista")
+    private String artista;
+
     @ManyToOne
     @JoinColumn(name = "genero_id")
     private Genero genero;
