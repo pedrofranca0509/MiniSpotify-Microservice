@@ -44,7 +44,8 @@ public class MusicaService {
     public MusicaDTO salvar(MusicaRequestDTO dto) {
         Musica musica = new Musica();
         musica.setTitulo(dto.titulo());
-
+        musica.setArtista(dto.artista());
+        musica.setDuracaoSegundos(dto.duracaoSegundos());
         musica.setGenero(buscarGenero(dto.generoId()));
         musica.setAlbum(buscarAlbum(dto.albumId()));
 

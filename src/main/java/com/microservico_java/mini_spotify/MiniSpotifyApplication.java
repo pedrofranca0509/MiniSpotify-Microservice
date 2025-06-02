@@ -1,4 +1,3 @@
-
 package com.microservico_java.mini_spotify;
 
 import org.springframework.boot.SpringApplication;
@@ -10,5 +9,4 @@ public class MiniSpotifyApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MiniSpotifyApplication.class, args);
 	}
-
 }

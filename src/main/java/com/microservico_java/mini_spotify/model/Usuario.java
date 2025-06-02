@@ -20,7 +20,7 @@ public class Usuario {
     private String email;
 
     @NotBlank
-    private String senha; // (Criptografar com BCrypt!)
+    private String senha; // Tem que criptografar com BCrypt
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
