@@ -25,4 +25,23 @@ public class PlaylistController {
     public ResponseEntity<List<PlaylistResponseDTO>> listarTodas() {
         return ResponseEntity.ok(playlistService.listarTodas());
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<PlaylistResponseDTO> buscarPorId(@PathVariable Long id) {
+        return ResponseEntity.ok(playlistService.buscarPorId(id));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<PlaylistResponseDTO> atualizar(
+        @PathVariable Long id,
+        @RequestBody @Valid PlaylistRequestDTO request
+    ) {
+        return ResponseEntity.ok(playlistService.atualizar(id, request));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletar(@PathVariable Long id) {
+        playlistService.deletar(id);
+        return ResponseEntity.noContent().build();
+    }
 }

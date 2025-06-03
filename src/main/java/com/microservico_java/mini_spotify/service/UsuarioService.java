@@ -37,6 +37,25 @@ public class UsuarioService {
                 .toList();
     }
 
+    public UsuarioResponseDTO atualizar(Long id, UsuarioRequestDTO request) {
+        Usuario usuario = usuarioRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuário não encontrado"));
+
+        usuario.setNome(request.nome());
+        usuario.setEmail(request.email());
+        usuario.setSenha(request.senha());
+
+        usuario = usuarioRepository.save(usuario);
+        return new UsuarioResponseDTO(usuario);
+    }
+
+    public void deletar(Long id) {
+        if (!usuarioRepository.existsById(id)) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuário não encontrado");
+        }
+        usuarioRepository.deleteById(id);
+    }
+
     public UsuarioResponseDTO buscarPorId(Long id) {
         Usuario usuario = usuarioRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuário não encontrado"));
