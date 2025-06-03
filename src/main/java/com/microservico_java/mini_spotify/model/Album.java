@@ -15,7 +15,9 @@ public class Album {
     private String artista;
 
     private String nome;
-    private Integer ano;
+
+    @Column(name = "ano_lancamento")
+    private Integer anoLancamento;
 
     @OneToMany(mappedBy = "album")
     private List<Musica> musicas = new ArrayList<>();
