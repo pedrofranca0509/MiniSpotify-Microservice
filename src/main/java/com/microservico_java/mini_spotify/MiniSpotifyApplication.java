@@ -10,3 +10,4 @@ public class MiniSpotifyApplication {
 		SpringApplication.run(MiniSpotifyApplication.class, args);
 	}
 }
+
