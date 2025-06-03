@@ -16,6 +16,9 @@ public class Musica {
     private String titulo;
     private Integer duracaoSegundos;
 
+    @ManyToMany
+    private Set<Musica> musicas;
+
     @ManyToOne
     @JoinColumn(name = "album_id")
     private Album album;
@@ -29,4 +32,9 @@ public class Musica {
 
     @ManyToMany(mappedBy = "musicas")
     private Set<Playlist> playlists = new HashSet<>();
+    
+        public void setMusicas(Set<Musica> musicas) {
+        this.musicas = musicas;
+    }
+
 }
