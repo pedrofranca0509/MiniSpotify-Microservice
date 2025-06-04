@@ -2,25 +2,32 @@ DELETE FROM playlist_musica;
 DELETE FROM playlist;
 DELETE FROM musica;
 DELETE FROM genero;
-DELETE FROM album;
 DELETE FROM usuario;
 
-INSERT INTO usuario (id, email, nome, senha) VALUES
-(1, 'usuario@teste.com', 'userTeste', 'senha123');
+-- Usuário sem ID
+INSERT INTO usuario (email, nome, senha) VALUES
+('usuario@teste.com', 'userTeste', 'senha123');
 
-INSERT INTO genero (id, nome) VALUES 
-(1, 'NomeGenero');
+-- Gênero sem ID
+INSERT INTO genero (nome) VALUES 
+('NomeGenero');
 
-INSERT INTO album (id, ano_lancamento, artista, nome) VALUES 
-(1, 2000,'AutorAlbum', 'NomeAlbum');
 
-INSERT INTO musica (id, artista, duracao_segundos, titulo, album_id, genero_id) VALUES
-(1, 'NomeArtista', 354,'NomeMusica', 1, 1);
+-- Música sem ID (precisa do ID do gênero - veja observação abaixo)
+-- Aqui você precisará obter os IDs com subqueries
+INSERT INTO musica (artista, duracao_segundos, titulo, genero_id) VALUES
+('NomeArtista', 354, 'NomeMusica',
+ (SELECT id FROM genero WHERE nome = 'NomeGenero')
+);
 
-INSERT INTO playlist (id, nome, usuario_id) VALUES
-(3, 'NomePlaylist', 1),
-(4, 'NomePlaylist2', 1);
+-- Playlist sem ID (usando SELECT para pegar o ID do usuário)
+INSERT INTO playlist (nome, usuario_id) VALUES
+('NomePlaylist', (SELECT id FROM usuario WHERE email = 'usuario@teste.com')),
+('NomePlaylist2', (SELECT id FROM usuario WHERE email = 'usuario@teste.com'));
 
+-- Playlist-música (usando SELECT para pegar os IDs)
 INSERT INTO playlist_musica (playlist_id, musica_id) VALUES
-(3, 1); 
-
+(
+  (SELECT id FROM playlist WHERE nome = 'NomePlaylist'),
+  (SELECT id FROM musica WHERE titulo = 'NomeMusica')
+);
