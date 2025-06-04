@@ -2,22 +2,20 @@ package com.microservico_java.mini_spotify.dto;
 
 import com.microservico_java.mini_spotify.model.Musica;
 
-public record MusicaDTO(
+public record MusicaResponseDTO(
         Long id,
         String titulo,
         String artista,
         int duracaoSegundos,
-        String nomeAlbum,
         String nomeGenero
 ) {
-    public MusicaDTO(Musica musica) {
+    public MusicaResponseDTO (Musica musica) {
         this(
                 musica.getId(),
                 musica.getTitulo(),
                 musica.getArtista(),
-                musica.getDuracaoSegundos(),
-                musica.getAlbum().getNome(),
-                musica.getGenero().getNome()
+                musica.getDuracaoSegundos() != null ? musica.getDuracaoSegundos() : 0,
+                musica.getGenero() != null ? musica.getGenero().getNome() : null
         );
     }
 }

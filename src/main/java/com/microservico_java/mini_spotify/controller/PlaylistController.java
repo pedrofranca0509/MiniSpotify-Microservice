@@ -5,6 +5,8 @@ import com.microservico_java.mini_spotify.dto.PlaylistResponseDTO;
 import com.microservico_java.mini_spotify.service.PlaylistService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/playlists")
 @RequiredArgsConstructor
+@Slf4j
 public class PlaylistController {
     private final PlaylistService playlistService;
 
@@ -23,7 +26,12 @@ public class PlaylistController {
 
     @GetMapping
     public ResponseEntity<List<PlaylistResponseDTO>> listarTodas() {
+        try {
         return ResponseEntity.ok(playlistService.listarTodas());
+    } catch (Exception e) {
+        log.error("Erro ao listar playlists", e);
+        return ResponseEntity.internalServerError().build();
+    }
     }
 
     @GetMapping("/{id}")
