@@ -1,8 +1,8 @@
 package com.microservico_java.mini_spotify.repository;
 
 import com.microservico_java.mini_spotify.model.Playlist;
-import com.microservico_java.mini_spotify.model.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -11,8 +11,11 @@ import java.util.List;
 public interface PlaylistRepository extends JpaRepository<Playlist, Long> {
 
     // Lista playlists de um usuário
-    List<Playlist> findByUsuario(Usuario usuario);
+    //List<Playlist> findByUsuario(Usuario usuario);
 
     // Busca por nome (ignorando maiúsculas/minúsculas)
-    List<Playlist> findByNomeContainingIgnoreCase(String nome);
+    //List<Playlist> findByNomeContainingIgnoreCase(String nome);
+
+     @Query("SELECT DISTINCT p FROM Playlist p LEFT JOIN FETCH p.musicas LEFT JOIN FETCH p.usuario")
+    List<Playlist> findAllWithMusicasAndUsuario();
 }
