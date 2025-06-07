@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+
+@SecurityRequirement(name = "BearerAuth")
 @RestController
 @RequestMapping("/usuarios")
 @RequiredArgsConstructor

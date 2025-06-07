@@ -3,7 +3,9 @@ package com.microservico_java.mini_spotify.controller;
 import com.microservico_java.mini_spotify.dto.PlaylistRequestDTO;
 import com.microservico_java.mini_spotify.dto.PlaylistResponseDTO;
 import com.microservico_java.mini_spotify.service.PlaylistService;
+
 import jakarta.validation.Valid;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -12,6 +14,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+
+@SecurityRequirement(name = "BearerAuth")
 @RestController
 @RequestMapping("/api/playlists")
 @RequiredArgsConstructor

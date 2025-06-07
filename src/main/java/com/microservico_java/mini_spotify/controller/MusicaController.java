@@ -3,13 +3,19 @@ package com.microservico_java.mini_spotify.controller;
 import com.microservico_java.mini_spotify.dto.MusicaResponseDTO;
 import com.microservico_java.mini_spotify.dto.MusicaRequestDTO;
 import com.microservico_java.mini_spotify.service.MusicaService;
+
 import jakarta.validation.Valid;
+
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+
+@SecurityRequirement(name = "BearerAuth")
 @RestController
 @RequestMapping("/api/musicas")
 @RequiredArgsConstructor
