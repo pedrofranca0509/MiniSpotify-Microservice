@@ -2,18 +2,20 @@ package com.microservico_java.mini_spotify.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import java.util.Set;
 import java.util.Objects;
+import java.util.HashSet;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import java.util.HashSet;
-
 @Entity
 @Data
+@NoArgsConstructor
 public class Musica {
      @EqualsAndHashCode.Include
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,5 +48,12 @@ public class Musica {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    public Musica(String titulo, String artista, Integer duracaoSegundos, Genero genero) {
+        this.titulo = titulo;
+        this.artista = artista;
+        this.duracaoSegundos = duracaoSegundos;
+        this.genero = genero;
     }
 }

@@ -5,7 +5,10 @@ import com.microservico_java.mini_spotify.dto.UsuarioResponseDTO;
 import com.microservico_java.mini_spotify.model.Usuario;
 import com.microservico_java.mini_spotify.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -16,6 +19,10 @@ import java.util.List;
 public class UsuarioService {
 
     private final UsuarioRepository usuarioRepository;
+    
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
 
     public UsuarioResponseDTO criarUsuario(UsuarioRequestDTO request) {
         if (usuarioRepository.existsByEmail(request.email())) {
@@ -25,7 +32,9 @@ public class UsuarioService {
         Usuario usuario = new Usuario();
         usuario.setNome(request.nome());
         usuario.setEmail(request.email());
-        usuario.setSenha(request.senha()); // Recomendado criptografar no futuro
+
+        String senhaCriptografada = passwordEncoder.encode(request.senha());
+        usuario.setSenha(senhaCriptografada);
 
         Usuario salvo = usuarioRepository.save(usuario);
         return new UsuarioResponseDTO(salvo);
@@ -43,7 +52,11 @@ public class UsuarioService {
 
         usuario.setNome(request.nome());
         usuario.setEmail(request.email());
-        usuario.setSenha(request.senha());
+
+        if (!passwordEncoder.matches(request.senha(), usuario.getSenha())) {
+            String novaSenhaCriptografada = passwordEncoder.encode(request.senha());
+            usuario.setSenha(novaSenhaCriptografada);
+        }
 
         usuario = usuarioRepository.save(usuario);
         return new UsuarioResponseDTO(usuario);
