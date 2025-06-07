@@ -3,6 +3,7 @@ package com.microservico_java.mini_spotify.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import lombok.NoArgsConstructor;
 import jakarta.persistence.*;
 import lombok.Data;
 import java.util.Set;
@@ -10,6 +11,7 @@ import java.util.HashSet;
 
 @Entity
 @Data
+@NoArgsConstructor
 public class Playlist {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -30,4 +32,9 @@ public class Playlist {
 
     @JsonManagedReference
     private Set<Musica> musicas = new HashSet<>();
+
+    public Playlist(String nome, Usuario usuario) {
+    this.nome = nome;
+    this.usuario = usuario;
+    }
 }

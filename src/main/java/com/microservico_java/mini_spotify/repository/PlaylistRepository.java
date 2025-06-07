@@ -10,12 +10,9 @@ import java.util.List;
 @Repository
 public interface PlaylistRepository extends JpaRepository<Playlist, Long> {
 
-    // Lista playlists de um usuário
-    //List<Playlist> findByUsuario(Usuario usuario);
-
-    // Busca por nome (ignorando maiúsculas/minúsculas)
-    //List<Playlist> findByNomeContainingIgnoreCase(String nome);
-
      @Query("SELECT DISTINCT p FROM Playlist p LEFT JOIN FETCH p.musicas LEFT JOIN FETCH p.usuario")
     List<Playlist> findAllWithMusicasAndUsuario();
+
+    boolean existsByNomeAndUsuario(String nome, com.microservico_java.mini_spotify.model.Usuario usuario);
+
 }

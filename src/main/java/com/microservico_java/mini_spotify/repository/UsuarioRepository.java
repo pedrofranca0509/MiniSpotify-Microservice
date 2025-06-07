@@ -15,3 +15,4 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     // Verifica se email já existe
     boolean existsByEmail(String email);
 }
+
