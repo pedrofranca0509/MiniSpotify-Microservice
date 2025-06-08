@@ -50,6 +50,7 @@ public class SecurityConfig {
         return config.getAuthenticationManager();
     }
 
+    @SuppressWarnings("deprecation")
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();

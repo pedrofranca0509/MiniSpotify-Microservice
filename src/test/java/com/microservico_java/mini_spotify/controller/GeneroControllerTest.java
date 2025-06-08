@@ -26,6 +26,7 @@ public class GeneroControllerTest {
         generoController = new GeneroController(generoService);
     }
 
+    @SuppressWarnings("null")
     @Test
     void testCriar_Sucesso() {
         GeneroRequestDTO request = new GeneroRequestDTO("Rock");
@@ -59,6 +60,7 @@ public class GeneroControllerTest {
         verify(generoService).listarTodos();
     }
 
+    @SuppressWarnings("null")
     @Test
     void testBuscarPorId_Sucesso() {
         GeneroResponseDTO responseDTO = new GeneroResponseDTO(1L, "Rock");
@@ -87,6 +89,7 @@ public class GeneroControllerTest {
         verify(generoService).buscarPorId(999L);
     }
 
+    @SuppressWarnings("null")
     @Test
     void testAtualizar_Sucesso() {
         GeneroRequestDTO request = new GeneroRequestDTO("Jazz");
