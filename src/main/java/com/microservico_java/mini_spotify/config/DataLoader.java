@@ -23,12 +23,12 @@ public class DataLoader {
         return args -> {
 
             // Verifica e cria usuários
-            Usuario u1 = usuarioRepository.findByEmail("admin@email.com")
+            Usuario u1 = usuarioRepository.findByEmail("joao@email.com")
                     .orElseGet(() -> {
                         Usuario novo = new Usuario();
-                        novo.setNome("admin");
-                        novo.setEmail("admin@email.com");
-                        novo.setSenha(passwordEncoder.encode("admin123"));
+                        novo.setNome("João Silva");
+                        novo.setEmail("joao@email.com");
+                        novo.setSenha(passwordEncoder.encode("senha123"));
                         return usuarioRepository.save(novo);
                     });
 
@@ -78,17 +78,17 @@ public class DataLoader {
                     });
 
             // Verifica e cria playlists
-            if (!playlistRepository.existsByNomeAndUsuario("Favoritas do João", u1)) {
+            if (!playlistRepository.existsByNomeAndUsuario("Best of Rock", u1)) {
                 Playlist p1 = new Playlist();
-                p1.setNome("Favoritas do João");
+                p1.setNome("Best of Rock");
                 p1.setUsuario(u1);
                 p1.getMusicas().add(m1);
                 playlistRepository.save(p1);
             }
 
-            if (!playlistRepository.existsByNomeAndUsuario("Hits da Maria", u2)) {
+            if (!playlistRepository.existsByNomeAndUsuario("Pop Songs", u2)) {
                 Playlist p2 = new Playlist();
-                p2.setNome("Hits da Maria");
+                p2.setNome("Pop Songs");
                 p2.setUsuario(u2);
                 p2.getMusicas().add(m2);
                 playlistRepository.save(p2);
