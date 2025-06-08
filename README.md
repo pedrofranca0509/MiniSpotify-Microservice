@@ -39,6 +39,88 @@ Este projeto é um clone do Spotify, com foco em replicar funcionalidades como r
 
 <h2>→ Estrutura de Pastas :</h2>
 
+MiniSpotify-Microservice
+
+├── .mvn/wrapper/
+│ └── maven-wrapper.properties
+
+├── data/
+│ └── minispotify.trace.db
+
+├── src/
+│ └── main/
+| │ └── java/com/microservico_java/mini_spotify/
+| | │ └── config/
+| | │ │ └── DataLoader.java/
+| | │ └── controller/
+| | │ │ └── AuthController.java/
+| | │ │ └── GeneroController.java/
+| | │ │ └── MusicaController.java/
+| | │ │ └── PlaylistController.java/
+| | │ │ └── UsuarioController.java/
+| | │ └── dto/
+| | │ │ └── GeneroRequestDTO.java/  
+| | │ │ └── eneroResponseDTO.java/
+| | │ │ └── LoginRequestDTO.java/
+| | │ │ └── MusicaRequestDTO.java/
+| | │ │ └── MusicaResponseDTO.java/
+| | │ │ └── PlaylistRequestDTO.java/
+| | │ │ └── PlaylistResponseDTO.java/
+| | │ │ └── UsuarioRequestDTO.java/
+| | │ │ └── UsuarioResponseDTO.java/
+| | │ └── model/
+| | │ │ └── Genero.java/
+| | │ │ └── Musica.java/
+| | │ │ └── Playlist.java/
+| | │ │ └── Usuario.java/
+| | │ └── repository/
+| | │ │ └── GeneroRepository.java
+| | │ │ └── MusicaRepository.java
+| | │ │ └── PlaylistRepository.java
+| | │ │ └── UsuarioRepository.java
+| | │ └── security/
+| | │ │ └── jwt/
+| | │ │ | └── JwtAuthenticationFilter.java/
+| | │ │ | └── JwtUtil.java/
+| | │ │ └── service/
+| | │ │ | └── UsuarioDetailsService.java/
+| | │ └── SecurityConfig.java/
+| | │ └── SwaggerConfig.java/
+| | │ └── service/
+| | │ │ └── GeneroService.java/
+| | │ │ └── MusicaService.java/
+| | │ │ └── PlaylistService.java/
+| | │ │ └── UsuarioService.java/
+| | │ └── MiniSpotifyApplication.java/
+| │ └── resources/
+| | │ └── _data.sql
+| | │ └── application.properties
+| | │ └── application-dev.properties
+| | │ └── application-prod.properties
+│ └── test/java/com/microservico_java/mini_spotify
+| │ └── controller/
+| | │ └── GeneroControllerTest.java
+| | │ └── MusicaControllerTest.java
+| | │ └── UsuarioControllerTest.java
+| │ └── service/
+| | │ └── GeneroServiceTest.java
+| | │ └── MusicaServiceTest.java
+| | │ └── UsuarioServiceTest.java
+| │ └── MiniSpotifyApplicationTests.java
+
+├── static
+│ └── index.html
+│ └── script.js
+│ └── style.css
+
+├── .env.example
+├── .gitattributes
+├── .gitignore
+├── README.md
+├── mvnw
+├── mvnw.cmd
+└── pom.xml
+
 <h2>→ Contribuições :</h2>
 
 
