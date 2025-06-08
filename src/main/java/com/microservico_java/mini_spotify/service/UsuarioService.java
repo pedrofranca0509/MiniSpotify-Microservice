@@ -21,7 +21,7 @@ public class UsuarioService {
     private final UsuarioRepository usuarioRepository;
     
     @Autowired
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
 
     public UsuarioResponseDTO criarUsuario(UsuarioRequestDTO request) {
