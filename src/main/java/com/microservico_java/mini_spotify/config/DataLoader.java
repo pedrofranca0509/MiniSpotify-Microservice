@@ -20,7 +20,7 @@ public class DataLoader {
             PlaylistRepository playlistRepository,
             PasswordEncoder passwordEncoder
     ) {
-        return args -> {
+        return _ -> {
 
             // Verifica e cria usuários
             Usuario u1 = usuarioRepository.findByEmail("joao@email.com")

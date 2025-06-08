@@ -56,4 +56,5 @@ public class AuthController {
             this.token = token;
         }
     }
+    
 }
