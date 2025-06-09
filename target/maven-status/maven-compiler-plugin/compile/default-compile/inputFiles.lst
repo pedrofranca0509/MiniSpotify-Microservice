@@ -13,6 +13,7 @@ D:\dev\Java\microservco-mini-spotify\mini-spotify\src\main\java\com\microservico
 D:\dev\Java\microservco-mini-spotify\mini-spotify\src\main\java\com\microservico_java\mini_spotify\dto\PlaylistResponseDTO.java
 D:\dev\Java\microservco-mini-spotify\mini-spotify\src\main\java\com\microservico_java\mini_spotify\dto\UsuarioRequestDTO.java
 D:\dev\Java\microservco-mini-spotify\mini-spotify\src\main\java\com\microservico_java\mini_spotify\dto\UsuarioResponseDTO.java
+D:\dev\Java\microservco-mini-spotify\mini-spotify\src\main\java\com\microservico_java\mini_spotify\exception\GlobalExceptionHandler.java
 D:\dev\Java\microservco-mini-spotify\mini-spotify\src\main\java\com\microservico_java\mini_spotify\MiniSpotifyApplication.java
 D:\dev\Java\microservco-mini-spotify\mini-spotify\src\main\java\com\microservico_java\mini_spotify\model\Genero.java
 D:\dev\Java\microservco-mini-spotify\mini-spotify\src\main\java\com\microservico_java\mini_spotify\model\Musica.java
