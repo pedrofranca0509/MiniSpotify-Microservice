@@ -14,7 +14,7 @@
             <img src="../img/icone-login.png" alt="logo do Mini-Spotify">
         </div>
         <section class="container">
-            <form action="/login" method="POST">
+            <form onsubmit="login(event)" method="POST">
                 <h1>Login</h1>
                 <div class="input-container">
                     <label for="email">Email:</label>
@@ -24,7 +24,7 @@
                     <label for="senha">Senha:</label>
                     <input type="password" id="senha" name="senha" required>
                 </div>
-                <button type="submit" class="Submit" onclick="login()">Entrar</button>
+                <button type="submit" class="Submit">Entrar</button>
             </form>
             <div class="toggle" onclick="window.location.href='register.html'">
                 <button>Registrar</button>
