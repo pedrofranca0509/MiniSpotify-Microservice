@@ -125,7 +125,22 @@ MiniSpotify-Microservice
 
 
 
-
+<h2>→ Tecnologia Utilizadas :</h2>
+ -- BACK-END --
+ * Java versão 17
+ * Spring booot 3.4.6
+ * Maven
+ * Spring Security + JWT
+ * Spring Data JPA
+ * Docker
+ * Swagger/OpenAPI
+ * Banco de dados H2 (desenvolvimento)
+ * PostgreSQL (produção)
+ * KIT JAVA/SPRING BOOT (extensões)
+ -- FRONT-END --
+ * JS
+ * HTML
+ * CSS
     
 
 
