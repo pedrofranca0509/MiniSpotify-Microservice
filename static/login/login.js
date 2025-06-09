@@ -1,9 +1,9 @@
-document.querySelector("form").addEventListener("submit", async (e) => {
-  e.preventDefault();
+async function login(event) {
+    event.preventDefault();
   const email = document.querySelector("#email").value;
   const senha = document.querySelector("#senha").value;
 
-  const res = await fetch("/auth/login", {
+  const res = await fetch("/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, senha })
@@ -14,6 +14,7 @@ document.querySelector("form").addEventListener("submit", async (e) => {
     localStorage.setItem("token", data.token);
     window.location.href = "/index.html";
   } else {
-    alert("Login inválido");
+    const msg = await res.text
+    alert("Login inválido" + msg);
   }
-});
+}
