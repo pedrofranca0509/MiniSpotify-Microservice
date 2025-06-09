@@ -22,6 +22,6 @@ public class SwaggerConfig {
                 .info(new Info()
                         .title("MiniSpotify API")
                         .version("2.8.8")
-                        .description("API para gerenciamento de músicas e playlists"));
+                        .description("API que simula um serviço de música, podendo gerenciar usuários, músicas, gêneros e playlists."));
     }
 }

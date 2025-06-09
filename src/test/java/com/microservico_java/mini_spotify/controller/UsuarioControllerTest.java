@@ -31,13 +31,14 @@ public class UsuarioControllerTest {
     @Test
     void criar_deveRetornarUsuarioResponseDTO() {
         UsuarioRequestDTO request = new UsuarioRequestDTO("Murilo", "murilo@example.com", "senha123");
-        UsuarioResponseDTO response = new UsuarioResponseDTO(1L, "Murilo", "murilo@example.com");
+        UsuarioResponseDTO esperado = new UsuarioResponseDTO(1L, "Murilo", "murilo@example.com");
 
-        when(usuarioService.criarUsuario(request)).thenReturn(response);
+        when(usuarioService.criarUsuario(request)).thenReturn(esperado);
 
-        UsuarioResponseDTO resultado = usuarioController.criar(request);
+        ResponseEntity<UsuarioResponseDTO> response = usuarioController.criar(request);
+        UsuarioResponseDTO resultado = response.getBody();
 
-        assertEquals(response, resultado);
+        assertEquals(esperado, resultado);
         verify(usuarioService, times(1)).criarUsuario(request);
     }
 
