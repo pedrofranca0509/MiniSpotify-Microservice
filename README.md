@@ -173,4 +173,77 @@ http://localhost:8080/swagger-ui/index.html#/
 <br><br>
 
 
+Rodar online:<br>
+1 - Acesse o link a seguir e você entrará no swagger da aplicação hospedada no
+render:<br>https://minispotify-microservice.onrender.com/swagger-ui/index.html#/
+<br><br>
+<h2>→ Estrutura de Pastas :</h2>
+MiniSpotify-Microservice
+├── src/<br>
+│ └── main/<br>
+| │ └── java/com/microservico_java/mini_spotify/<br>
+| | │ └── config/<br>
+| | │ │ └── DataLoader.java/<br>
+| | │ └── controller/<br>
+| | │ │ └── AuthController.java/<br>
+| | │ │ └── GeneroController.java/<br>
+| | │ │ └── MusicaController.java/<br>
+| | │ │ └── PlaylistController.java/<br>
+| | │ │ └── UsuarioController.java/<br>
+| | │ └── dto/<br>
+| | │ │ └── GeneroRequestDTO.java/<br>
+| | │ │ └── eneroResponseDTO.java/<br>
+| | │ │ └── LoginRequestDTO.java/<br>
+| | │ │ └── MusicaRequestDTO.java/<br>
+| | │ │ └── MusicaResponseDTO.java/<br>
+| | │ │ └── PlaylistRequestDTO.java/<br>
+| | │ │ └── PlaylistResponseDTO.java/<br>
+| | │ │ └── UsuarioRequestDTO.java/<br>
+| | │ │ └── UsuarioResponseDTO.java/<br>
+| | │ └── model/<br>
+| | │ │ └── Genero.java/<br>
+| | │ │ └── Musica.java/<br>
+| | │ │ └── Playlist.java/<br>
+| | │ │ └── Usuario.java/<br>
+| | │ └── repository/<br>
+| | │ │ └── GeneroRepository.java<br>
+| | │ │ └── MusicaRepository.java<br>
+| | │ │ └── PlaylistRepository.java<br>
+| | │ │ └── UsuarioRepository.java<br>
+| | │ └── security/<br>
+| | │ │ └── jwt/<br>
+| | │ │ | └── JwtAuthenticationFilter.java/<br>
+| | │ │ | └── JwtUtil.java/<br>
+| | │ │ └── service/<br>
+| | │ │ | └── UsuarioDetailsService.java/<br>
+| | │ └── SecurityConfig.java/<br>
+| | │ └── SwaggerConfig.java/<br>
+| | │ └── service/<br>
+| | │ │ └── GeneroService.java/<br>
+| | │ │ └── MusicaService.java/<br>
+| | │ │ └── PlaylistService.java/<br>
+| | │ │ └── UsuarioService.java/<br>
+| | │ └── MiniSpotifyApplication.java/<br>
+| │ └── resources/<br>
+| | │ └── _data.sql<br>
+| | │ └── application.properties<br>
+| | │ └── application-dev.properties<br>
+| | │ └── application-prod.properties<br>
+│ └── test/java/com/microservico_java/mini_spotify<br>
+| │ └── controller/<br>
+| | │ └── GeneroControllerTest.java<br>
+| | │ └── MusicaControllerTest.java<br>
+| | │ └── UsuarioControllerTest.java<br>
+| │ └── service/<br>
+| | │ └── GeneroServiceTest.java<br>
+| | │ └── MusicaServiceTest.java<br>
+| | │ └── UsuarioServiceTest.java<br>
+| │ └── MiniSpotifyApplicationTests.java<br>
+├── .env.example<br>
+├── .gitattributes<br>
+├── .gitignore<br>
+├── README.md<br>
+├── mvnw<br>
+├── mvnw.cmd<br>
+└── pom.xml<br>
 
