@@ -158,6 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+  document.getElementById("btn-removerPlaylist").addEventListener("click", removerPlaylist);
 });
 
 document.getElementById("btn-criarPlaylist").addEventListener("click", criarPlaylist);
