@@ -47,12 +47,14 @@ Este projeto é um clone do Spotify, com foco em replicar funcionalidades como r
 Responsável pelo Back End<br>
 
 <h4>NICOLAS MARQUES - RA: 078390 ↓</h4>
+Auxilio no Back End e Elaboração do Front End<br>
   
 <h4>ARTHUR ZAFFALON - RA: 078212 ↓</h4>
 Elaboração do Figma, Documentação e Slides<br>
 
 <h4>BIANCA FREIRE - RA: 078218 ↓</h4>
-  
+Elaboração do Figma, Documentação e Slides<br>
+
 <h4>PEDRO FRANCA - RA: 078418 ↓</h4>
   
 <h4>RICARDO PETRAGLIA - RA: 207557 ↓</h4>
