@@ -23,136 +23,37 @@ Este projeto é um clone do Spotify, com foco em replicar funcionalidades como r
 <h2>→ Tecnologia Utilizadas :</h2>
 
   -- BACK-END -- 
-  * Java versão 24
-  * Spring booot 3.4.6
-  * Banco de dados H2 (desenvolvimento)
-  * PostgreSQL (produção)
-  * KIT JAVA (extenções)
+   * Java versão 17
+   * Spring booot 3.4.6
+   * Maven
+   * Spring Security + JWT
+   * Spring Data JPA
+   * Docker
+   * Swagger/OpenAPI
+   * Banco de dados H2 (desenvolvimento)
+   * PostgreSQL (produção)
+   * KIT JAVA/SPRING BOOT (extensões)
 
   -- FRONT-END --
-  * JS
-  * HTML 
-  * CSS
-
-
-<h2>→ Como Executar :</h2>
-
-<h2>→ Estrutura de Pastas :</h2>
-
-MiniSpotify-Microservice
-
-├── .mvn/wrapper/
-│ └── maven-wrapper.properties
-
-├── data/
-│ └── minispotify.trace.db
-
-├── src/
-│ └── main/
-| │ └── java/com/microservico_java/mini_spotify/
-| | │ └── config/
-| | │ │ └── DataLoader.java/
-| | │ └── controller/
-| | │ │ └── AuthController.java/
-| | │ │ └── GeneroController.java/
-| | │ │ └── MusicaController.java/
-| | │ │ └── PlaylistController.java/
-| | │ │ └── UsuarioController.java/
-| | │ └── dto/
-| | │ │ └── GeneroRequestDTO.java/  
-| | │ │ └── eneroResponseDTO.java/
-| | │ │ └── LoginRequestDTO.java/
-| | │ │ └── MusicaRequestDTO.java/
-| | │ │ └── MusicaResponseDTO.java/
-| | │ │ └── PlaylistRequestDTO.java/
-| | │ │ └── PlaylistResponseDTO.java/
-| | │ │ └── UsuarioRequestDTO.java/
-| | │ │ └── UsuarioResponseDTO.java/
-| | │ └── model/
-| | │ │ └── Genero.java/
-| | │ │ └── Musica.java/
-| | │ │ └── Playlist.java/
-| | │ │ └── Usuario.java/
-| | │ └── repository/
-| | │ │ └── GeneroRepository.java
-| | │ │ └── MusicaRepository.java
-| | │ │ └── PlaylistRepository.java
-| | │ │ └── UsuarioRepository.java
-| | │ └── security/
-| | │ │ └── jwt/
-| | │ │ | └── JwtAuthenticationFilter.java/
-| | │ │ | └── JwtUtil.java/
-| | │ │ └── service/
-| | │ │ | └── UsuarioDetailsService.java/
-| | │ └── SecurityConfig.java/
-| | │ └── SwaggerConfig.java/
-| | │ └── service/
-| | │ │ └── GeneroService.java/
-| | │ │ └── MusicaService.java/
-| | │ │ └── PlaylistService.java/
-| | │ │ └── UsuarioService.java/
-| | │ └── MiniSpotifyApplication.java/
-| │ └── resources/
-| | │ └── _data.sql
-| | │ └── application.properties
-| | │ └── application-dev.properties
-| | │ └── application-prod.properties
-│ └── test/java/com/microservico_java/mini_spotify
-| │ └── controller/
-| | │ └── GeneroControllerTest.java
-| | │ └── MusicaControllerTest.java
-| | │ └── UsuarioControllerTest.java
-| │ └── service/
-| | │ └── GeneroServiceTest.java
-| | │ └── MusicaServiceTest.java
-| | │ └── UsuarioServiceTest.java
-| │ └── MiniSpotifyApplicationTests.java
-
-├── static
-│ └── index.html
-│ └── script.js
-│ └── style.css
-
-├── .env.example
-├── .gitattributes
-├── .gitignore
-├── README.md
-├── mvnw
-├── mvnw.cmd
-└── pom.xml
+   * JS
+   * HTML 
+   * CSS
 
 <h2>→ Contribuições :</h2>
 
 
-
-<h2>→ Tecnologia Utilizadas :</h2>
- -- BACK-END --
- * Java versão 17
- * Spring booot 3.4.6
- * Maven
- * Spring Security + JWT
- * Spring Data JPA
- * Docker
- * Swagger/OpenAPI
- * Banco de dados H2 (desenvolvimento)
- * PostgreSQL (produção)
- * KIT JAVA/SPRING BOOT (extensões)
- -- FRONT-END --
- * JS
- * HTML
- * CSS
-
-    
 <h2>→ Como Executar :</h2>
-Rodar localmente:
-<br><br>
-*Tenha o jdk do java versão 17+(nosso pom.xml está na 17), PostgreSQl (versão mais
-recente) e Maven (versão mais recente) instalados.<br>
-1 - Clone o repositóri: git clone
+
+*OBS : Tenha o jdk do java versão 17+(nosso pom.xml está na 17), PostgreSQl (versão mais
+recente) e Maven (versão mais recente) instalados.* <br>
+
+*1 - Clone o repositório: git clone*
 https://github.com/Muril0Pacheco/MiniSpotify-Microservice.git<br>
-2 - Crie uma database no PostgreSQL chamada mini_spotify<br>
-3 - Crie um arquivo `.env` na raiz do projeto com o seguinte conteúdo(na raiz do projeto
-temos o .env.example):<br><br>
+
+*2 - Crie uma database no PostgreSQL chamada mini_spotify<br>*
+
+*3 - Crie um arquivo `.env` na raiz do projeto com o seguinte conteúdo(na raiz do projeto
+temos o .env.example):*<br><br>
 DB_URL=jdbc:postgresql://localhost:5432/mini_spotify<br>
 DB_USERNAME= SEU_USUARIO_POSTGRES(Usuário padrão é 'postgres')<br>
 DB_PASSWORD= SUA_SENHA_POSTGRES<br>
@@ -160,7 +61,8 @@ DDL_AUTO= update<br>
 SERVER_PORT= 8080(Certifique-se que a porta não esteja sendo utilizada)<br>
 JWT_SECRET= SUA_CHAVE_JWT(crie uma sequência de caracteres)<br>
 <br>
-4 - No terminal ra raiz do projeto execute:<br>
+
+*4 - No terminal ra raiz do projeto execute:*<br>
 Get-Content .env | ForEach-Object {<br>
  if ($_ -match "^\s*([^#][^=]*)=(.*)$") {<br>
  [System.Environment]::SetEnvironmentVariable($matches[1].Trim(),
@@ -168,15 +70,19 @@ $matches[2].Trim(), "Process")<br>
  }<br>
 }<br>
 ./mvnw spring-boot:run<br>
-<br>5 - Agora você pode testar no swagger:
+<br>
+
+*5 - Agora você pode testar no swagger:*
 http://localhost:8080/swagger-ui/index.html#/
 <br><br>
 
 
-Rodar online:<br>
+<h2>Rodar online:</h2><br>
+
 1 - Acesse o link a seguir e você entrará no swagger da aplicação hospedada no
 render:<br>https://minispotify-microservice.onrender.com/swagger-ui/index.html#/
 <br><br>
+
 <h2>→ Estrutura de Pastas :</h2>
 MiniSpotify-Microservice
 ├── src/<br>
