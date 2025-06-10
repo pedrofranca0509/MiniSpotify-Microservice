@@ -13,6 +13,8 @@ public interface PlaylistRepository extends JpaRepository<Playlist, Long> {
      @Query("SELECT DISTINCT p FROM Playlist p LEFT JOIN FETCH p.musicas LEFT JOIN FETCH p.usuario")
     List<Playlist> findAllWithMusicasAndUsuario();
 
-    boolean existsByNomeAndUsuario(String nome, com.microservico_java.mini_spotify.model.Usuario usuario);
+    @Query("SELECT p FROM Playlist p JOIN p.musicas m WHERE m.id = :musicaId")
+    List<Playlist> findAllByMusicaId(Long musicaId);
 
+    boolean existsByNomeAndUsuario(String nome, com.microservico_java.mini_spotify.model.Usuario usuario);
 }

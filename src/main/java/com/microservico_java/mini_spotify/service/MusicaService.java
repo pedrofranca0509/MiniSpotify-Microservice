@@ -4,8 +4,12 @@ import com.microservico_java.mini_spotify.dto.MusicaResponseDTO;
 import com.microservico_java.mini_spotify.dto.MusicaRequestDTO;
 import com.microservico_java.mini_spotify.model.Genero;
 import com.microservico_java.mini_spotify.model.Musica;
+import com.microservico_java.mini_spotify.model.Playlist;
 import com.microservico_java.mini_spotify.repository.GeneroRepository;
 import com.microservico_java.mini_spotify.repository.MusicaRepository;
+import com.microservico_java.mini_spotify.repository.PlaylistRepository;
+
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -19,6 +23,7 @@ public class MusicaService {
 
     private final MusicaRepository musicaRepository;
     private final GeneroRepository generoRepository;
+    private final PlaylistRepository playlistRepository;
 
     public List<MusicaResponseDTO> listarTodas() {
         return musicaRepository.findAll().stream()
@@ -60,11 +65,26 @@ public class MusicaService {
         return new MusicaResponseDTO(atualizada);
     }
 
+    @Transactional
     public void deletar(Long id) {
-        if (!musicaRepository.existsById(id)) {
+        /**if (!musicaRepository.existsById(id)) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Música não encontrada");
         }
-        musicaRepository.deleteById(id);
+        musicaRepository.deleteById(id);8*/
+
+         Musica musica = musicaRepository.findById(id)
+            .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Música não encontrada"));
+
+    // Remove a música de todas as playlists
+    List<Playlist> playlists = playlistRepository.findAllByMusicaId(id);
+    for (Playlist playlist : playlists) {
+        if (playlist.getMusicas().contains(musica)) {
+            playlist.getMusicas().remove(musica);
+        }
+    }
+
+    playlistRepository.saveAll(playlists); // Atualiza as playlists
+    musicaRepository.delete(musica); // Deleta a música
     }
 
     private Genero buscarGenero(Long id) {
