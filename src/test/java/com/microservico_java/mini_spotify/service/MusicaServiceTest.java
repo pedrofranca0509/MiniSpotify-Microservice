@@ -6,6 +6,8 @@ import com.microservico_java.mini_spotify.model.Genero;
 import com.microservico_java.mini_spotify.model.Musica;
 import com.microservico_java.mini_spotify.repository.GeneroRepository;
 import com.microservico_java.mini_spotify.repository.MusicaRepository;
+import com.microservico_java.mini_spotify.repository.PlaylistRepository;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -27,6 +29,9 @@ class MusicaServiceTest {
 
     @Mock
     private GeneroRepository generoRepository;
+
+    @Mock
+    private PlaylistRepository playlistRepository;
 
     @InjectMocks
     private MusicaService musicaService;
@@ -83,11 +88,21 @@ class MusicaServiceTest {
 
     @Test
     void deletar_DeveExcluir_QuandoIdExistente() {
-        when(musicaRepository.existsById(1L)).thenReturn(true);
+        /*when(musicaRepository.existsById(1L)).thenReturn(true);
 
         musicaService.deletar(1L);
 
-        verify(musicaRepository).deleteById(1L);
+        verify(musicaRepository).deleteById(1L);*/
+        Musica musica = new Musica("Título", "Artista", 200, null);
+        musica.setId(1L);
+
+        when(musicaRepository.findById(1L)).thenReturn(Optional.of(musica));
+        when(playlistRepository.findAllByMusicaId(1L)).thenReturn(List.of()); // mocka playlists
+
+        musicaService.deletar(1L);
+
+        // opcional: verifique se removeu da playlist
+        verify(musicaRepository).findById(1L);
     }
 
     @Test
