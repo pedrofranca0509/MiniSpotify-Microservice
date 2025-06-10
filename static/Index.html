@@ -16,7 +16,7 @@
                 <div class="search-container">
                     <img src="./img/magnifying-glass.png" alt="ícone de busca" class="search-icon">
                     <input type="text" placeholder="Buscar">
-                </div>  
+                </div>
             </ul>
             <ul class="nav-links">
                 <img src="./img/clock.png" alt="logo simbolo de relógio">
@@ -35,28 +35,56 @@
                 <div class="playlist-item">
                     <img src="./img/audio-music.png" alt="Playlist 2">
                     <p>Estoura timpano</p>
-                </div>  
+                </div>
             </div>
 
-            <div class="artists">
-                <h2>Artistas</h2>
-                <div class="artist-item">
-                    <img src="./img/artist1.jpg" alt="Artista 1">
-                    <p>Artista 1</p>
-                </div>
-                <div class="artist-item">
-                    <img src="./img/artist2.jpg" alt="Artista 2">
-                    <p>Artista 2</p>
-                </div>
-               
+                <ul id="playlist-list"></ul>
+
+                <!-- CRIAR PLAYLIST -->
+                <h3>Nova Playlist</h3>
+                <input type="text" id="novaPlaylistNome" placeholder="Nome da playlist" />
+                <button id="btn-criarPlaylist">Criar</button>
+
+                <!-- ADICIONAR MÚSICA -->
+                <h3>Adicionar música à playlist</h3>
+                <input type="text" id="musicaUrl" placeholder="URL da música" />
+                <input type="text" id="musicaTitulo" placeholder="Título" />
+                <select id="selectPlaylists"></select>
+                <button id="btn-adicionarMusica">Adicionar Música</button>
+
+
             </div>
         </section>
-         <section class="hero">
+        <section class="hero">
             <div class="centro">
-            <h1>Bem-vindo ao SoniWave</h1>
-            <p>Descubra novas músicas e artistas</p>
-             </div>
+                <h1>Bem-vindo ao SoniWave</h1>
+
+                <div class="album">
+                    <img src="./img/album travis.jpg" alt="Capa do álbum">
+
+                    <div class="album-info">
+                        <h1> astroworld</h1>
+                        <p class="pzi">Descubra, curta e compartilhe suas músicas favoritas em um só lugar.
+                            Explore milhares de álbuns, playlists personalizadas e artistas do mundo inteiro. Crie sua
+                            própria coleção, ouça sem interrupções e leve sua música para onde quiser.</p>
+                        <button class="plays">Play</button>
+                    </div>
+                </div>
+                <div class="music-controls">
+                    <audio id="audio" controls></audio><br>
+                    <button class="control-button" id="prev">
+                        ⏮️
+                    </button>
+                    <button class="control-button" id="btn-playpause">
+                        ▶️
+                    </button>
+                    <button class="control-button" id="btn-next">
+                        ⏭️
+                    </button>
+                </div>
+            </div>
         </section>
+        <script src="script.js"></script>
 </body>
 
 </html>
