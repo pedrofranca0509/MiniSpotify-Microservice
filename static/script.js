@@ -167,13 +167,18 @@ document.getElementById("btn-adicionarMusica").addEventListener("click", adicion
 function criarPlaylist() {
   const nome = document.getElementById("novaPlaylistNome").value;
 
+  // ✅ Correção: enviando o usuário autenticado via ID extraído do token JWT
   fetch("/api/playlists", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`
     },
-    body: JSON.stringify({ nome, usuarioId, musicasIds: [] })
+    body: JSON.stringify({
+      nome: nome,
+      usuarioId: usuarioId, 
+      musicasIds: [] 
+    })
   })
     .then((res) => {
       if (!res.ok) throw new Error("Erro ao criar playlist");
