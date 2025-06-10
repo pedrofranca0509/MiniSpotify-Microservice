@@ -18,7 +18,7 @@ Este projeto é um clone do Spotify, com foco em replicar funcionalidades como r
 
   * Autenticação (login/cadastro).
   * Página inicial com destaques.
-  * Listagem de artistas, playlists e usuario.
+  * Listagem de artistas, playlists e usuário.
   * Reprodutor de música com play/pause, volume e progresso.
     
 
@@ -56,7 +56,8 @@ Elaboração do Figma, Documentação e Slides<br>
 Elaboração do Figma, Documentação e Slides<br>
 
 <h4>PEDRO FRANCA - RA: 078418 ↓</h4>
-  
+Elaboração do Back End<br>
+
 <h4>RICARDO PETRAGLIA - RA: 207557 ↓</h4>
 Elaboração do Figma, Documentação e Slides<br>
 
