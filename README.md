@@ -82,7 +82,7 @@ SERVER_PORT= 8080(Certifique-se que a porta não esteja sendo utilizada)<br>
 JWT_SECRET= SUA_CHAVE_JWT(crie uma sequência de caracteres)<br>
 <br>
 
-*4 - No terminal ra raiz do projeto execute:*<br>
+*4 - No terminal da raiz do projeto execute:*<br>
 Get-Content .env | ForEach-Object {<br>
  if ($_ -match "^\s*([^#][^=]*)=(.*)$") {<br>
  [System.Environment]::SetEnvironmentVariable($matches[1].Trim(),
