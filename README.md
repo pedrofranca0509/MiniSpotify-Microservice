@@ -35,8 +35,6 @@ Este projeto é um clone do Spotify, com foco em replicar funcionalidades como r
   * CSS
 
 
-<h2>→ Como Executar :</h2>
-
 <h2>→ Estrutura de Pastas :</h2>
 
 MiniSpotify-Microservice
