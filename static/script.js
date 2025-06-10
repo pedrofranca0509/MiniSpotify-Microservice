@@ -5,7 +5,7 @@ if (!token) {
 }
 
 const audio = document.getElementById("audio");
-const btnPlayPause = document.getElementById("play");   
+const btnPlayPause = document.getElementById("btn-playpause");   
 const btnNext = document.getElementById("next");         
 const btnPrev = document.getElementById("prev");         
 

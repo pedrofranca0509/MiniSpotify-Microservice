@@ -3,7 +3,7 @@ async function login(event) {
   const email = document.querySelector("#email").value;
   const senha = document.querySelector("#senha").value;
 
-  const res = await fetch("/login", {
+  const res = await fetch("/auth/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, senha })
@@ -14,7 +14,7 @@ async function login(event) {
     localStorage.setItem("token", data.token);
     window.location.href = "/index.html";
   } else {
-    const msg = await res.text
+    const msg = await res.text();
     alert("Login inválido" + msg);
   }
 }
