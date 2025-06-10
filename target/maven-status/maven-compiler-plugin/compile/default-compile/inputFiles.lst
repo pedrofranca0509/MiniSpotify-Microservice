@@ -26,6 +26,7 @@ D:\dev\Java\microservco-mini-spotify\mini-spotify\src\main\java\com\microservico
 D:\dev\Java\microservco-mini-spotify\mini-spotify\src\main\java\com\microservico_java\mini_spotify\repository\UsuarioRepository.java
 D:\dev\Java\microservco-mini-spotify\mini-spotify\src\main\java\com\microservico_java\mini_spotify\security\jwt\JwtAuthenticationFilter.java
 D:\dev\Java\microservco-mini-spotify\mini-spotify\src\main\java\com\microservico_java\mini_spotify\security\jwt\JwtUtil.java
+D:\dev\Java\microservco-mini-spotify\mini-spotify\src\main\java\com\microservico_java\mini_spotify\security\JwtAuthenticationEntryPoint.java
 D:\dev\Java\microservco-mini-spotify\mini-spotify\src\main\java\com\microservico_java\mini_spotify\security\SecurityConfig.java
 D:\dev\Java\microservco-mini-spotify\mini-spotify\src\main\java\com\microservico_java\mini_spotify\security\service\UsuarioDetailsService.java
 D:\dev\Java\microservco-mini-spotify\mini-spotify\src\main\java\com\microservico_java\mini_spotify\security\SwaggerConfig.java
