@@ -45,15 +45,15 @@ Este projeto é um clone do Spotify, com foco em replicar funcionalidades como r
 <h2>→ Contribuições :</h2>
 <h4>MURILO PACHECO - RA: 213390 ↓</h4>
   
-<h3>NICOLAS MARQUS - RA: 078390 ↓</h3>
+<h4>NICOLAS MARQUS - RA: 078390 ↓</h4>
   
-<h3>ARTHUR ZAFFALON - RA: 078212 ↓</h3>
+<h4>ARTHUR ZAFFALON - RA: 078212 ↓</h4>
   
-<h3>BIANCA FREIRE - RA: 078218 ↓</h3>
+<h4>BIANCA FREIRE - RA: 078218 ↓</h4>
   
-<h3>PEDRO FRANCA - RA: 078418 ↓</h3>
+<h4>PEDRO FRANCA - RA: 078418 ↓</h4>
   
-<h3>RICARDO RETRAGLIA - RA: 207557 ↓</h3>
+<h4>RICARDO RETRAGLIA - RA: 207557 ↓</h4>
 
 
 <h2>→ Como Executar :</h2>
