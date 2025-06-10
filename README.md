@@ -44,6 +44,27 @@ Este projeto é um clone do Spotify, com foco em replicar funcionalidades como r
 
 <h2>→ Contribuições :</h2>
 
+   * Java versão 17
+   * Spring booot 3.4.6
+   * Maven
+   * Spring Security + JWT
+   * Spring Data JPA
+   * Docker
+   * Swagger/OpenAPI
+   * Banco de dados H2 (desenvolvimento)
+   * PostgreSQL (produção)
+   * KIT JAVA/SPRING BOOT (extensões)
+
+  -- FRONT-END --
+   * JS
+   * HTML 
+   * CSS
+
+<h2>→ Contribuições :</h2>
+
+<h2>→ Como Executar :</h2>
+
+<h2>→ Estrutura de Pastas :</h2>
 
     
 <h2>→ Como Executar :</h2>
@@ -51,6 +72,7 @@ Este projeto é um clone do Spotify, com foco em replicar funcionalidades como r
 <h3>→Rodar online:</h3><br>
 
 *OBS : Tenha o jdk do java versão 17+(nosso pom.xml está na 17), PostgreSQl (versão mais
+
 recente) e Maven (versão mais recente) instalados.*<br>
 
 *1 - Clone o repositório:*
@@ -59,6 +81,15 @@ git clone
 https://github.com/Muril0Pacheco/MiniSpotify-Microservice.git<br>
 
 *2 - Crie uma database no PostgreSQL chamada mini_spotify<br>*
+
+
+recente) e Maven (versão mais recente) instalados.* <br>
+
+*1 - Clone o repositório: git clone*
+https://github.com/Muril0Pacheco/MiniSpotify-Microservice.git<br>
+
+*2 - Crie uma database no PostgreSQL chamada mini_spotify<br>*
+
 
 *3 - Crie um arquivo `.env` na raiz do projeto com o seguinte conteúdo(na raiz do projeto
 temos o .env.example):*<br><br>
@@ -79,13 +110,27 @@ $matches[2].Trim(), "Process")<br>
 }<br>
 ./mvnw spring-boot:run<br>
 
+=======
+<br>
+
+
 *5 - Agora você pode testar no swagger:*
 http://localhost:8080/swagger-ui/index.html#/
 <br><br>
 
+
 <h3>→Rodar online:</h2><br>
 *1 - Acesse o link a seguir e você entrará no swagger da aplicação hospedada no
 render:<br>https://minispotify-microservice.onrender.com/swagger-ui/index.html#/*
+<br><br>
+
+
+
+
+<h2>Rodar online:</h2><br>
+
+1 - Acesse o link a seguir e você entrará no swagger da aplicação hospedada no
+render:<br>https://minispotify-microservice.onrender.com/swagger-ui/index.html#/
 <br><br>
 
 
