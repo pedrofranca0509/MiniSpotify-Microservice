@@ -2,9 +2,7 @@ com\microservico_java\mini_spotify\controller\GeneroControllerTest.class
 com\microservico_java\mini_spotify\controller\MusicaControllerTest.class
 com\microservico_java\mini_spotify\controller\UsuarioControllerTest.class
 com\microservico_java\mini_spotify\MiniSpotifyApplicationTests.class
-com\microservico_java\mini_spotify\controller\PlaylistControllerTest.class
 com\microservico_java\mini_spotify\controller\AuthControllerTest.class
 com\microservico_java\mini_spotify\service\GeneroServiceTest.class
-com\microservico_java\mini_spotify\service\PlaylistServiceTest.class
 com\microservico_java\mini_spotify\service\MusicaServiceTest.class
 com\microservico_java\mini_spotify\service\UsuarioServiceTest.class

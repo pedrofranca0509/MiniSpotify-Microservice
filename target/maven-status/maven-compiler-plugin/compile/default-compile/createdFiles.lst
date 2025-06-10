@@ -2,6 +2,7 @@ com\microservico_java\mini_spotify\controller\AuthController.class
 com\microservico_java\mini_spotify\model\Musica.class
 com\microservico_java\mini_spotify\controller\GeneroController.class
 com\microservico_java\mini_spotify\repository\GeneroRepository.class
+com\microservico_java\mini_spotify\exception\GlobalExceptionHandler.class
 com\microservico_java\mini_spotify\service\GeneroService.class
 com\microservico_java\mini_spotify\dto\MusicaRequestDTO.class
 com\microservico_java\mini_spotify\dto\PlaylistResponseDTO.class
@@ -25,10 +26,8 @@ com\microservico_java\mini_spotify\security\service\UsuarioDetailsService.class
 com\microservico_java\mini_spotify\controller\MusicaController.class
 com\microservico_java\mini_spotify\repository\MusicaRepository.class
 com\microservico_java\mini_spotify\security\jwt\JwtUtil.class
-com\microservico_java\mini_spotify\service\PlaylistService.class
 com\microservico_java\mini_spotify\model\Playlist.class
 com\microservico_java\mini_spotify\security\SecurityConfig.class
 com\microservico_java\mini_spotify\dto\UsuarioRequestDTO.class
 com\microservico_java\mini_spotify\MiniSpotifyApplication.class
 com\microservico_java\mini_spotify\service\MusicaService.class
-com\microservico_java\mini_spotify\controller\PlaylistController.class
