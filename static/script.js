@@ -3,6 +3,18 @@ if (!token) {
   window.location.href = "/login/login.html";
 }
 
+// Função para decodificar JWT e extrair o ID do usuário
+function parseJwt(token) {
+  try {
+    return JSON.parse(atob(token.split('.')[1]));
+  } catch (e) {
+    return null;
+  }
+}
+
+const decoded = parseJwt(token);
+const usuarioId = decoded?.id || decoded?.sub;
+
 let currentPlaylist = null;
 let musicaAtual = 0;
 let playlists = [];
@@ -122,6 +134,97 @@ async function removerPlaylist() {
 
   alert("Playlist removida!");
   carregarPlaylists();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const btnPlay = document.getElementById("btn-play");
+  const btnPlayPause = document.getElementById("btn-playpause");
+  const btnNext = document.getElementById("btn-next");
+  const btnPrev = document.getElementById("prev");
+
+  if (btnPlay) btnPlay.addEventListener("click", tocarMusicaAtual);
+  if (btnNext) btnNext.addEventListener("click", proximaMusica);
+  if (btnPrev) btnPrev.addEventListener("click", musicaAnterior);
+
+  if (btnPlayPause) {
+    btnPlayPause.addEventListener("click", () => {
+      const player = document.getElementById("player");
+      if (player.paused) {
+        player.play();
+        btnPlayPause.innerText = "⏸️";
+      } else {
+        player.pause();
+        btnPlayPause.innerText = "▶️";
+      }
+    });
+  }
+});
+
+document.getElementById("btn-criarPlaylist").addEventListener("click", criarPlaylist);
+document.getElementById("btn-adicionarMusica").addEventListener("click", adicionarMusica);
+
+function criarPlaylist() {
+  const nome = document.getElementById("novaPlaylistNome").value;
+
+  fetch("/api/playlists", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`
+    },
+    body: JSON.stringify({ nome, usuarioId, musicasIds: [] })
+  })
+    .then((res) => {
+      if (!res.ok) throw new Error("Erro ao criar playlist");
+      return res.json();
+    })
+    .then(() => {
+      alert("Playlist criada com sucesso");
+      carregarPlaylists();
+    })
+    .catch((err) => {
+      console.error("Erro:", err);
+      alert("Erro ao criar playlist");
+    });
+}
+
+async function adicionarMusica() {
+  const titulo = document.getElementById("musicaTitulo").value;
+  const playlistIndex = document.getElementById("playlistSelect").value;
+  const playlist = playlists[playlistIndex];
+
+  if (!playlist) {
+    alert("Selecione uma playlist válida.");
+    return;
+  }
+
+  try {
+    const res = await fetch(`/api/musicas/buscar?titulo=${encodeURIComponent(titulo)}`, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+
+    if (!res.ok) throw new Error("Música não encontrada");
+
+    const musica = await res.json();
+    const musicaId = musica.id;
+
+    const updateRes = await fetch(`/api/playlists/${playlist.id}/musicas`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify({ musicasIds: [musicaId] })
+    });
+
+    if (!updateRes.ok) throw new Error("Erro ao adicionar música à playlist");
+
+    alert("Música adicionada com sucesso!");
+    carregarPlaylists();
+  } catch (err) {
+    console.error("Erro:", err);
+    alert("Erro ao adicionar música");
+  }
 }
 
 carregarPlaylists();

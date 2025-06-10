@@ -13,15 +13,15 @@
     <header>
         <nav>
             <ul class="home">
-                <img src="./img/home.png" alt="simbolo de home" onclick="window.location.href='/'">
+                <img src="/img/home.png" alt="simbolo de home" onclick="window.location.href='/'">
                 <div class="search-container">
-                    <img src="./img/magnifying-glass.png" alt="ícone de busca" class="search-icon">
+                    <img src="/img/magnifying-glass.png" alt="ícone de busca" class="search-icon">
                     <input type="text" placeholder="Buscar">
                 </div>
             </ul>
             <ul class="nav-links">
-                <img src="./img/clock.png" alt="logo simbolo de relógio">
-                <img src="./img/community.png" alt="logo simbolo de comunidade">
+                <img src="/img/clock.png" alt="logo simbolo de relógio">
+                <img src="/img/community.png" alt="logo simbolo de comunidade">
             </ul>
         </nav>
     </header>
@@ -30,27 +30,26 @@
             <div class="playlist">
                 <h2>Playlists</h2>
                 <div class="playlist-item">
-                    <img src="./img/like.png" alt="Playlist 1">
+                    <img src="/img/like.png" alt="Playlist 1">
                     <p>Músicas Curtidas</p>
                 </div>
                 <div class="playlist-item">
-                    <img src="./img/audio-music.png" alt="Playlist 2">
+                    <img src="/img/audio-music.png" alt="Playlist 2">
                     <p>Estoura timpano</p>
                 </div>
             </div>
 
-                <ul id="playlist-list"></ul>
+                <ul id="playlistList"></ul>
 
-                <!-- CRIAR PLAYLIST -->
+             
                 <h3>Nova Playlist</h3>
                 <input type="text" id="novaPlaylistNome" placeholder="Nome da playlist" />
                 <button id="btn-criarPlaylist">Criar</button>
 
-                <!-- ADICIONAR MÚSICA -->
                 <h3>Adicionar música à playlist</h3>
                 <input type="text" id="musicaUrl" placeholder="URL da música" />
                 <input type="text" id="musicaTitulo" placeholder="Título" />
-                <select id="selectPlaylists"></select>
+                <select id="playlistSelect"></select>
                 <button id="btn-adicionarMusica">Adicionar Música</button>
 
 
@@ -61,7 +60,7 @@
                 <h1>Bem-vindo ao SoniWave</h1>
 
                 <div class="album">
-                    <img src="./img/album travis.jpg" alt="Capa do álbum">
+                    <img src="/img/album travis.jpg" alt="Capa do álbum">
 
                     <div class="album-info">
                         <h1> astroworld</h1>
@@ -89,3 +88,4 @@
 </body>
 
 </html>
+

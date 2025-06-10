@@ -45,8 +45,15 @@ public class SecurityConfig {
             )
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
-                    .requestMatchers("/auth/**", "/public/**", "/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html", "/swagger-resources/**", "/webjars/**", "/h2-console/**", "/error").permitAll()
-                     .requestMatchers(HttpMethod.POST, "/usuarios").permitAll()
+                    .requestMatchers("/auth/**", "/public/**", "/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html", "/swagger-resources/**", "/webjars/**", "/h2-console/**", "/error", "/login/**","/register/**",  "/static/**",
+                    "/*/css/**",
+                    "/style.css",
+                    "/js/**",
+                    "/img/**",
+                    "/index.html/**",
+                    "/script.js/**",
+                    "/favicon.ico").permitAll()
+                     .requestMatchers(HttpMethod.POST, "/usuarios", "/auth/login").permitAll()
                     .anyRequest().authenticated()
             )
             .authenticationProvider(authenticationProvider()) 
@@ -75,7 +82,7 @@ public class SecurityConfig {
      @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(Arrays.asList("http://localhost:5500")); // Seu front-end
+        config.setAllowedOrigins(Arrays.asList("http://localhost:8080/login/**", "http://localhost:8080/index.html")); // Seu front-end
         config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(Arrays.asList("*"));
         config.setAllowCredentials(true);
