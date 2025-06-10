@@ -1,141 +1,127 @@
-
 const token = localStorage.getItem("token");
 if (!token) {
   window.location.href = "/login/login.html";
 }
 
-const audio = document.getElementById("audio");
-const btnPlayPause = document.getElementById("btn-playpause");   
-const btnNext = document.getElementById("next");         
-const btnPrev = document.getElementById("prev");         
-
-let playlists = [];
 let currentPlaylist = null;
-let currentTrackIndex = 0;
-
-
-window.addEventListener("DOMContentLoaded", async () => {
-  await carregarPlaylists();
-});
-
-
-btnPlayPause.addEventListener("click", () => {
-  if (audio.paused) {
-    audio.play();
-    btnPlayPause.textContent = "⏸️"; 
-  } else {
-    audio.pause();
-    btnPlayPause.textContent = "▶️"; 
-  }
-});
-
-
-btnNext.addEventListener("click", () => {
-  if (!currentPlaylist) return;
-  currentTrackIndex = (currentTrackIndex + 1) % currentPlaylist.musicas.length;
-  tocarMusicaAtual();
-});
-
-
-btnPrev.addEventListener("click", () => {
-  if (!currentPlaylist) return;
-  currentTrackIndex = (currentTrackIndex - 1 + currentPlaylist.musicas.length) % currentPlaylist.musicas.length;
-  tocarMusicaAtual();
-});
-
-
-document.getElementById("btn-criarPlaylist").addEventListener("click", async () => {
-  const nome = document.getElementById("novaPlaylistNome").value;
-  if (!nome) return alert("Informe o nome da playlist");
-
-  await fetch("/playlists", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-    body: JSON.stringify({ nome }),
-  });
-
-  await carregarPlaylists();
-});
-
-
-document.getElementById("btn-adicionarMusica").addEventListener("click", async () => {
-  const url = document.getElementById("musicaUrl").value;
-  const titulo = document.getElementById("musicaTitulo").value;
-  const playlistId = document.getElementById("selectPlaylists").value;
-
-  if (!url || !titulo || !playlistId) {
-    alert("Preencha todos os campos");
-    return;
-  }
-
-  await fetch(`/playlists/${playlistId}/musicas`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-    body: JSON.stringify({ titulo, url }),
-  });
-
-  await carregarPlaylists();
-});
-
+let musicaAtual = 0;
+let playlists = [];
 
 async function carregarPlaylists() {
-  const res = await fetch("/playlists", {
-    headers: { Authorization: `Bearer ${token}` },
-  });
+  try {
+    const res = await fetch("/api/playlists", {
+      headers: { Authorization: `Bearer ${token}` },
+    });
 
-  playlists = await res.json();
+    if (res.status === 401) {
+      localStorage.removeItem("token");
+      return window.location.href = "/login/login.html";
+    }
 
-  const ul = document.getElementById("playlist-list");
-  const select = document.getElementById("selectPlaylists");
+    if (!res.ok) {
+      alert("Erro ao carregar playlists");
+      return;
+    }
 
-  ul.innerHTML = "";
-  select.innerHTML = "";
+    playlists = await res.json();
+    const playlistList = document.getElementById("playlistList");
+    const playlistSelect = document.getElementById("playlistSelect");
 
-  playlists.forEach((playlist) => {
-    
-    const option = document.createElement("option");
-    option.value = playlist.id;
-    option.textContent = playlist.nome;
-    select.appendChild(option);
+    playlistList.innerHTML = "";
+    playlistSelect.innerHTML = "";
 
-    
-    const li = document.createElement("li");
-    li.textContent = playlist.nome;
+    playlists.forEach((playlist, index) => {
+      const li = document.createElement("li");
+      li.innerText = playlist.nome;
+      li.onclick = () => selecionarPlaylist(index);
+      playlistList.appendChild(li);
 
-    const btnEntrar = document.createElement("button");
-    btnEntrar.textContent = "▶️ Entrar";
-    btnEntrar.onclick = () => {
-      currentPlaylist = playlist;
-      currentTrackIndex = 0;
-      tocarMusicaAtual();
-    };
+      const option = document.createElement("option");
+      option.value = index;
+      option.innerText = playlist.nome;
+      playlistSelect.appendChild(option);
+    });
+  } catch (error) {
+    console.error("Erro:", error);
+    alert("Erro de conexão com o servidor.");
+  }
+}
 
-    const btnRemover = document.createElement("button");
-    btnRemover.textContent = "🗑️ Remover";
-    btnRemover.onclick = async () => {
-      await fetch(`/playlists/${playlist.id}`, {
-        method: "DELETE",
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      await carregarPlaylists();
-    };
-
-    li.appendChild(btnEntrar);
-    li.appendChild(btnRemover);
-    ul.appendChild(li);
-  });
+function selecionarPlaylist(index) {
+  currentPlaylist = playlists[index];
+  musicaAtual = 0;
+  tocarMusicaAtual();
 }
 
 function tocarMusicaAtual() {
   if (!currentPlaylist || currentPlaylist.musicas.length === 0) return;
-  const musica = currentPlaylist.musicas[currentTrackIndex];
-  audio.src = musica.url;
-  audio.play();
-  btnPlayPause.textContent = "⏸️"; 
+
+  const musica = currentPlaylist.musicas[musicaAtual];
+  const player = document.getElementById("player");
+  player.src = musica.link;
+  player.play();
+
+  document.getElementById("musicaAtual").innerText = `Tocando: ${musica.nome}`;
 }
+
+function proximaMusica() {
+  if (!currentPlaylist || currentPlaylist.musicas.length === 0) return;
+
+  musicaAtual = (musicaAtual + 1) % currentPlaylist.musicas.length;
+  tocarMusicaAtual();
+}
+
+function musicaAnterior() {
+  if (!currentPlaylist || currentPlaylist.musicas.length === 0) return;
+
+  musicaAtual = (musicaAtual - 1 + currentPlaylist.musicas.length) % currentPlaylist.musicas.length;
+  tocarMusicaAtual();
+}
+
+async function entrarPlaylist() {
+  const index = document.getElementById("playlistSelect").value;
+  const playlist = playlists[index];
+
+  const res = await fetch(`/api/playlists/${playlist.id}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+
+  if (res.status === 401) {
+    localStorage.removeItem("token");
+    return window.location.href = "/login/login.html";
+  }
+
+  if (!res.ok) {
+    alert("Erro ao entrar na playlist");
+    return;
+  }
+
+  currentPlaylist = await res.json();
+  musicaAtual = 0;
+  tocarMusicaAtual();
+}
+
+async function removerPlaylist() {
+  const index = document.getElementById("playlistSelect").value;
+  const playlist = playlists[index];
+
+  const res = await fetch(`/api/playlists/${playlist.id}`, {
+    method: "DELETE",
+    headers: { Authorization: `Bearer ${token}` },
+  });
+
+  if (res.status === 401) {
+    localStorage.removeItem("token");
+    return window.location.href = "/login/login.html";
+  }
+
+  if (!res.ok) {
+    alert("Erro ao remover playlist");
+    return;
+  }
+
+  alert("Playlist removida!");
+  carregarPlaylists();
+}
+
+carregarPlaylists();
