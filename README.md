@@ -49,13 +49,14 @@ Responsável pelo Back End<br>
 <h4>NICOLAS MARQUES - RA: 078390 ↓</h4>
   
 <h4>ARTHUR ZAFFALON - RA: 078212 ↓</h4>
-  
+Elaboração do Figma, Documentação e Slides<br>
+
 <h4>BIANCA FREIRE - RA: 078218 ↓</h4>
   
 <h4>PEDRO FRANCA - RA: 078418 ↓</h4>
   
-<h4>RICARDO RETRAGLIA - RA: 207557 ↓</h4>
-
+<h4>RICARDO PETRAGLIA - RA: 207557 ↓</h4>
+Elaboração do Figma, Documentação e Slides<br>
 
 <h2>→ Como Executar :</h2>
 
