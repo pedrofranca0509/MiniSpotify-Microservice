@@ -314,3 +314,6 @@ main {
     background-color: #f0a500;
     color: #000;
 }
+#btn-removerPlaylist {
+    margin-top: 10px;
+}
