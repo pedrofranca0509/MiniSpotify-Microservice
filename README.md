@@ -44,8 +44,9 @@ Este projeto é um clone do Spotify, com foco em replicar funcionalidades como r
 
 <h2>→ Contribuições :</h2>
 <h4>MURILO PACHECO - RA: 213390 ↓</h4>
-  
-<h4>NICOLAS MARQUS - RA: 078390 ↓</h4>
+Responsável pelo Back End<br>
+
+<h4>NICOLAS MARQUES - RA: 078390 ↓</h4>
   
 <h4>ARTHUR ZAFFALON - RA: 078212 ↓</h4>
   
