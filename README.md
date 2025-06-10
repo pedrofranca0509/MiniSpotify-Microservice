@@ -43,22 +43,22 @@ Este projeto é um clone do Spotify, com foco em replicar funcionalidades como r
 
 
 <h2>→ Contribuições :</h2>
-<h3>MURILO PACHECO - RA: 213390 ↓<h3>
+<h4>MURILO PACHECO - RA: 213390 ↓</h4>
   
-<h3>NICOLAS MARQUS - RA: 078390 ↓<h3>
+<h3>NICOLAS MARQUS - RA: 078390 ↓</h3>
   
-<h3>ARTHUR ZAFFALON - RA: 078212 ↓<h3>
+<h3>ARTHUR ZAFFALON - RA: 078212 ↓</h3>
   
-<h3>BIANCA FREIRE - RA: 078218 ↓<h3>
+<h3>BIANCA FREIRE - RA: 078218 ↓</h3>
   
-<h3>PEDRO FRANCA - RA: 078418 ↓<h3>
+<h3>PEDRO FRANCA - RA: 078418 ↓</h3>
   
-<h3>RICARDO RETRAGLIA - RA: 207557 ↓<h3>
+<h3>RICARDO RETRAGLIA - RA: 207557 ↓</h3>
 
 
 <h2>→ Como Executar :</h2>
 
-<h3>→Rodar local:<h3><br>
+<h3>→Rodar local:</h3><br>
 
 *OBS : Tenha o jdk do java versão 17+(nosso pom.xml está na 17), PostgreSQl (versão mais
 recente) e Maven (versão mais recente) instalados.*<br>
