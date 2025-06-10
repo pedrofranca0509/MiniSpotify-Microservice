@@ -95,7 +95,7 @@ $matches[2].Trim(), "Process")<br>
 }<br>
 ./mvnw spring-boot:run<br>
 
-=======
+
 <br>
 
 *5 - Agora você pode testar no swagger:*
@@ -104,7 +104,7 @@ http://localhost:8080/swagger-ui/index.html#/
 
 
 <h3>→Rodar online:</h2><br>
-*1 - Acesse o link a seguir e você entrará no swagger da aplicação hospedada no
+1 - Acesse o link a seguir e você entrará no swagger da aplicação hospedada no
 render:<br>https://minispotify-microservice.onrender.com/swagger-ui/index.html#/*
 <br><br>
 
