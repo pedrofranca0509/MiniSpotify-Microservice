@@ -1,5 +1,6 @@
 package com.microservico_java.mini_spotify.security;
 
+import com.microservico_java.mini_spotify.security.jwt.JwtAuthenticationEntryPoint;
 import com.microservico_java.mini_spotify.security.jwt.JwtAuthenticationFilter;
 import com.microservico_java.mini_spotify.security.service.UsuarioDetailsService;
 
@@ -16,11 +17,6 @@ import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import org.springframework.web.cors.CorsConfiguration;
-
-import java.util.Arrays;
 
 
 @Configuration
@@ -41,7 +37,6 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
             .csrf(csrf -> csrf.disable())
-             .cors(cors -> cors.configurationSource(corsConfigurationSource()))
             .headers(headers -> headers
                 .frameOptions(frame -> frame.sameOrigin()) 
             )
@@ -80,18 +75,5 @@ public class SecurityConfig {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-    }
-
-     @Bean
-    public CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(Arrays.asList("http://localhost:8080/login/**", "http://localhost:8080/index.html")); // Seu front-end
-        config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-        config.setAllowedHeaders(Arrays.asList("*"));
-        config.setAllowCredentials(true);
-
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", config);
-        return source;
     }
 }

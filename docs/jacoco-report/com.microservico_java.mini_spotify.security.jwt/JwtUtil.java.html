@@ -9,44 +9,44 @@ import java.security.Key;
 import java.util.Date;
 
 @Component
-<span class="nc" id="L12">public class JwtUtil {</span>
+<span class="fc" id="L12">public class JwtUtil {</span>
 
     @Value(&quot;${jwt.secret}&quot;) // injeta do application.properties
     private String jwtSecret;
 
-<span class="nc" id="L17">    private final long jwtExpirationMs = 86400000; // 24h</span>
+<span class="fc" id="L17">    private final long jwtExpirationMs = 86400000; // 24h</span>
 
     private Key getKey() {
-<span class="nc" id="L20">        return Keys.hmacShaKeyFor(jwtSecret.getBytes());</span>
+<span class="fc" id="L20">        return Keys.hmacShaKeyFor(jwtSecret.getBytes());</span>
     }
 
     public String generateToken(String username) {
-<span class="nc" id="L24">        return Jwts.builder()</span>
-<span class="nc" id="L25">                .setSubject(username)</span>
-<span class="nc" id="L26">                .setIssuedAt(new Date())</span>
-<span class="nc" id="L27">                .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))</span>
-<span class="nc" id="L28">                .signWith(getKey(), SignatureAlgorithm.HS512)</span>
-<span class="nc" id="L29">                .compact();</span>
+<span class="fc" id="L24">        return Jwts.builder()</span>
+<span class="fc" id="L25">                .setSubject(username)</span>
+<span class="fc" id="L26">                .setIssuedAt(new Date())</span>
+<span class="fc" id="L27">                .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))</span>
+<span class="fc" id="L28">                .signWith(getKey(), SignatureAlgorithm.HS512)</span>
+<span class="fc" id="L29">                .compact();</span>
     }
 
     public String getUsernameFromToken(String token) {
-<span class="nc" id="L33">        return Jwts.parserBuilder()</span>
-<span class="nc" id="L34">                .setSigningKey(getKey())</span>
-<span class="nc" id="L35">                .build()</span>
-<span class="nc" id="L36">                .parseClaimsJws(token)</span>
-<span class="nc" id="L37">                .getBody()</span>
-<span class="nc" id="L38">                .getSubject();</span>
+<span class="fc" id="L33">        return Jwts.parserBuilder()</span>
+<span class="fc" id="L34">                .setSigningKey(getKey())</span>
+<span class="fc" id="L35">                .build()</span>
+<span class="fc" id="L36">                .parseClaimsJws(token)</span>
+<span class="fc" id="L37">                .getBody()</span>
+<span class="fc" id="L38">                .getSubject();</span>
     }
 
     public boolean validateToken(String token) {
         try {
-<span class="nc" id="L43">            Jwts.parserBuilder()</span>
-<span class="nc" id="L44">                .setSigningKey(getKey())</span>
-<span class="nc" id="L45">                .build()</span>
-<span class="nc" id="L46">                .parseClaimsJws(token);</span>
-<span class="nc" id="L47">            return true;</span>
-<span class="nc" id="L48">        } catch (JwtException | IllegalArgumentException e) {</span>
-<span class="nc" id="L49">            return false;</span>
+<span class="fc" id="L43">            Jwts.parserBuilder()</span>
+<span class="fc" id="L44">                .setSigningKey(getKey())</span>
+<span class="fc" id="L45">                .build()</span>
+<span class="fc" id="L46">                .parseClaimsJws(token);</span>
+<span class="fc" id="L47">            return true;</span>
+<span class="fc" id="L48">        } catch (JwtException | IllegalArgumentException e) {</span>
+<span class="fc" id="L49">            return false;</span>
         }
     }
 }

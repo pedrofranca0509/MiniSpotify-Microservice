@@ -109,4 +109,70 @@ class PlaylistControllerTest {
         assertEquals(HttpStatus.NO_CONTENT, result.getStatusCode());
         verify(playlistService, times(1)).deletar(1L);
     }
+
+    @Test
+    void buscarPorId_deveLancarExcecaoQuandoNaoEncontrado() {
+    // Arrange
+        Long idInvalido = 999L;
+        when(playlistService.buscarPorId(idInvalido)).thenThrow(new RuntimeException("Playlist não encontrada"));
+
+        // Act & Assert
+        RuntimeException exception = assertThrows(RuntimeException.class, () -> {
+            playlistController.buscarPorId(idInvalido);
+        });
+
+        assertEquals("Playlist não encontrada", exception.getMessage());
+        verify(playlistService, times(1)).buscarPorId(idInvalido);
+    }
+
+    @Test
+    void atualizar_deveLancarExcecaoQuandoIdNaoExiste() {
+        // Arrange
+        Long idInvalido = 999L;
+        PlaylistRequestDTO request = new PlaylistRequestDTO("Inexistente", 1L, List.of(1L));
+
+        when(playlistService.atualizar(idInvalido, request))
+            .thenThrow(new RuntimeException("Playlist não encontrada"));
+
+        // Act & Assert
+        RuntimeException exception = assertThrows(RuntimeException.class, () -> {
+            playlistController.atualizar(idInvalido, request);
+        });
+
+        assertEquals("Playlist não encontrada", exception.getMessage());
+        verify(playlistService, times(1)).atualizar(idInvalido, request);
+    }
+
+    @Test
+    void criar_deveLancarExcecaoQuandoDadosInvalidos() {
+        // Arrange
+        PlaylistRequestDTO requestInvalido = new PlaylistRequestDTO("", null, null);
+
+        when(playlistService.criarPlaylist(requestInvalido))
+            .thenThrow(new IllegalArgumentException("Dados inválidos"));
+
+        // Act & Assert
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            playlistController.criar(requestInvalido);
+        });
+
+        assertEquals("Dados inválidos", exception.getMessage());
+        verify(playlistService, times(1)).criarPlaylist(requestInvalido);
+    }
+
+    @Test
+    void listarTodas_deveRetornarListaVaziaComStatus200() {
+        // Arrange
+        when(playlistService.listarTodas()).thenReturn(List.of());
+
+        // Act
+        ResponseEntity<List<PlaylistResponseDTO>> result = playlistController.listarTodas();
+
+        // Assert
+        assertEquals(HttpStatus.OK, result.getStatusCode());
+        assertNotNull(result.getBody());
+        assertTrue(result.getBody().isEmpty());
+        verify(playlistService, times(1)).listarTodas();
+    }
+
 }

@@ -7,21 +7,21 @@ import org.springframework.security.core.userdetails.*;
 import org.springframework.stereotype.Service;
 
 @Service
-<span class="nc" id="L10">public class UsuarioDetailsService implements UserDetailsService {</span>
+<span class="fc" id="L10">public class UsuarioDetailsService implements UserDetailsService {</span>
 
     @Autowired
     private UsuarioRepository usuarioRepository;
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-<span class="nc" id="L17">        Usuario usuario = usuarioRepository.findByEmail(email)</span>
-<span class="nc" id="L18">                .orElseThrow(() -&gt; new UsernameNotFoundException(&quot;Usuário não encontrado: &quot; + email));</span>
+<span class="fc" id="L17">        Usuario usuario = usuarioRepository.findByEmail(email)</span>
+<span class="fc" id="L18">                .orElseThrow(() -&gt; new UsernameNotFoundException(&quot;Usuário não encontrado: &quot; + email));</span>
 
-<span class="nc" id="L20">        return User.builder()</span>
-<span class="nc" id="L21">                .username(usuario.getEmail())</span>
-<span class="nc" id="L22">                .password(usuario.getSenha()) </span>
-<span class="nc" id="L23">                .roles(&quot;USER&quot;)</span>
-<span class="nc" id="L24">                .build();</span>
+<span class="fc" id="L20">        return User.builder()</span>
+<span class="fc" id="L21">                .username(usuario.getEmail())</span>
+<span class="fc" id="L22">                .password(usuario.getSenha()) </span>
+<span class="fc" id="L23">                .roles(&quot;USER&quot;)</span>
+<span class="fc" id="L24">                .build();</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.13.202504020838</span></div></body></html>

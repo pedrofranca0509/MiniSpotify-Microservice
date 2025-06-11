@@ -17,43 +17,43 @@ import java.util.List;
 
 
 @ControllerAdvice
-<span class="nc" id="L20">public class GlobalExceptionHandler {</span>
+<span class="fc" id="L20">public class GlobalExceptionHandler {</span>
 
     @ExceptionHandler(ResponseStatusException.class)
     public ResponseEntity&lt;Object&gt; handleResponseStatusException(ResponseStatusException ex) {
-<span class="nc" id="L24">        Map&lt;String, Object&gt; body = new LinkedHashMap&lt;&gt;();</span>
-<span class="nc" id="L25">        body.put(&quot;timestamp&quot;, LocalDateTime.now());</span>
-<span class="nc" id="L26">        body.put(&quot;status&quot;, ex.getStatusCode().value());</span>
-<span class="nc" id="L27">        body.put(&quot;error&quot;, ex.getStatusCode().toString());</span>
-<span class="nc" id="L28">        body.put(&quot;message&quot;, ex.getReason());</span>
-<span class="nc" id="L29">        return new ResponseEntity&lt;&gt;(body, ex.getStatusCode());</span>
+<span class="fc" id="L24">        Map&lt;String, Object&gt; body = new LinkedHashMap&lt;&gt;();</span>
+<span class="fc" id="L25">        body.put(&quot;timestamp&quot;, LocalDateTime.now());</span>
+<span class="fc" id="L26">        body.put(&quot;status&quot;, ex.getStatusCode().value());</span>
+<span class="fc" id="L27">        body.put(&quot;error&quot;, ex.getStatusCode().toString());</span>
+<span class="fc" id="L28">        body.put(&quot;message&quot;, ex.getReason());</span>
+<span class="fc" id="L29">        return new ResponseEntity&lt;&gt;(body, ex.getStatusCode());</span>
     }
 
     @ExceptionHandler(EntityNotFoundException.class)
     public ResponseEntity&lt;Object&gt; handleEntityNotFoundException(EntityNotFoundException ex) {
-<span class="nc" id="L34">        Map&lt;String, Object&gt; body = new LinkedHashMap&lt;&gt;();</span>
-<span class="nc" id="L35">        body.put(&quot;timestamp&quot;, LocalDateTime.now());</span>
-<span class="nc" id="L36">        body.put(&quot;status&quot;, 404);</span>
-<span class="nc" id="L37">        body.put(&quot;error&quot;, &quot;Not Found&quot;);</span>
-<span class="nc" id="L38">        body.put(&quot;message&quot;, ex.getMessage());</span>
-<span class="nc" id="L39">        return new ResponseEntity&lt;&gt;(body, HttpStatus.NOT_FOUND);</span>
+<span class="fc" id="L34">        Map&lt;String, Object&gt; body = new LinkedHashMap&lt;&gt;();</span>
+<span class="fc" id="L35">        body.put(&quot;timestamp&quot;, LocalDateTime.now());</span>
+<span class="fc" id="L36">        body.put(&quot;status&quot;, 404);</span>
+<span class="fc" id="L37">        body.put(&quot;error&quot;, &quot;Not Found&quot;);</span>
+<span class="fc" id="L38">        body.put(&quot;message&quot;, ex.getMessage());</span>
+<span class="fc" id="L39">        return new ResponseEntity&lt;&gt;(body, HttpStatus.NOT_FOUND);</span>
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity&lt;Object&gt; handleValidationExceptions(MethodArgumentNotValidException ex) {
-<span class="nc" id="L44">        Map&lt;String, Object&gt; body = new LinkedHashMap&lt;&gt;();</span>
-<span class="nc" id="L45">        body.put(&quot;timestamp&quot;, LocalDateTime.now());</span>
-<span class="nc" id="L46">        body.put(&quot;status&quot;, HttpStatus.BAD_REQUEST.value());</span>
-<span class="nc" id="L47">        body.put(&quot;error&quot;, &quot;Bad Request&quot;);</span>
+<span class="fc" id="L44">        Map&lt;String, Object&gt; body = new LinkedHashMap&lt;&gt;();</span>
+<span class="fc" id="L45">        body.put(&quot;timestamp&quot;, LocalDateTime.now());</span>
+<span class="fc" id="L46">        body.put(&quot;status&quot;, HttpStatus.BAD_REQUEST.value());</span>
+<span class="fc" id="L47">        body.put(&quot;error&quot;, &quot;Bad Request&quot;);</span>
 
-<span class="nc" id="L49">        List&lt;String&gt; errors = ex.getBindingResult()</span>
-<span class="nc" id="L50">                .getFieldErrors()</span>
-<span class="nc" id="L51">                .stream()</span>
-<span class="nc" id="L52">                .map(err -&gt; err.getField() + &quot;: &quot; + err.getDefaultMessage())</span>
-<span class="nc" id="L53">                .toList();</span>
+<span class="fc" id="L49">        List&lt;String&gt; errors = ex.getBindingResult()</span>
+<span class="fc" id="L50">                .getFieldErrors()</span>
+<span class="fc" id="L51">                .stream()</span>
+<span class="fc" id="L52">                .map(err -&gt; err.getField() + &quot;: &quot; + err.getDefaultMessage())</span>
+<span class="fc" id="L53">                .toList();</span>
 
-<span class="nc" id="L55">        body.put(&quot;message&quot;, errors);</span>
-<span class="nc" id="L56">        return new ResponseEntity&lt;&gt;(body, HttpStatus.BAD_REQUEST);</span>
+<span class="fc" id="L55">        body.put(&quot;message&quot;, errors);</span>
+<span class="fc" id="L56">        return new ResponseEntity&lt;&gt;(body, HttpStatus.BAD_REQUEST);</span>
     }   
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.13.202504020838</span></div></body></html>
