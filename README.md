@@ -1,4 +1,4 @@
-# MiniSpotify - Microserviço - Em desenvolvimento
+# MiniSpotify - Microserviço
 
 <h1>--- Í N D I C E ---</h1>
 
@@ -16,17 +16,16 @@ Este projeto é um clone do Spotify, com foco em replicar funcionalidades como r
 
 <h2>→ Funcionalidades :</h2>
 
-  * Autenticação (login/cadastro).
-  * Página inicial com destaques.
-  * Listagem de artistas, playlists e usuário.
-  * Reprodutor de música com play/pause, volume e progresso.
-    
+  * Autenticação com token.
+  * Listagem, criação, exclusão e atualização de artistas, playlists, gêneros  e usuário.
+  * Listagem específica utilizando ID.
+  * Em músicas é possível fazer uma busca por título.
 
 <h2>→ Tecnologia Utilizadas :</h2>
 
   -- BACK-END -- 
   * Java versão 17
-  * Spring booot 3.4.6
+  * Spring boot 3.4.6
   * Maven
   * Spring Security + JWT
   * Spring Data JPA
@@ -34,8 +33,8 @@ Este projeto é um clone do Spotify, com foco em replicar funcionalidades como r
   * Swagger/OpenAPI
   * Banco de dados H2 (desenvolvimento)
   * PostgreSQL (produção)
-  * KIT JAVA/SPRING BOOT (extensões)
-
+  * Testes com JUnit 5 e Mockito, e JaCoCo para medir a cobertura - Relatóro JaCoCo disponível em: https://muril0pacheco.github.io/MiniSpotify-Microservice/jacoco-report/index.html   <br>   <br>
+ 
   -- FRONT-END --
   * JS
   * HTML 
@@ -162,14 +161,26 @@ MiniSpotify-Microservice
 | | │ └── application-dev.properties<br>
 | | │ └── application-prod.properties<br>
 │ └── test/java/com/microservico_java/mini_spotify<br>
+| │ └── bootstrap/<br>
+| | │ └── DataLoaderTest.java<br>
 | │ └── controller/<br>
 | | │ └── GeneroControllerTest.java<br>
 | | │ └── MusicaControllerTest.java<br>
 | | │ └── UsuarioControllerTest.java<br>
+| │ └── exception/<br>
+| | │ └── GlobalExceptionHandlerTest.java<br>
 | │ └── service/<br>
 | | │ └── GeneroServiceTest.java<br>
 | | │ └── MusicaServiceTest.java<br>
 | | │ └── UsuarioServiceTest.java<br>
+| │ └── security/<br>
+| | │ └── SecurityConfigTest.java<br>
+| | │ └── service/<br>
+| | │ │ └── UsuarioDetailsServiceTest.java/<br>
+| | │ └── jwt/<br>
+| | │ │ └── JwtAuthenticationEntryPointTest.java/<br>
+| | │ │ └── JwtAuthenticationFilterTest.java/<br>
+| | │ │ └── JwtUtilTest.java/<br>
 | │ └── MiniSpotifyApplicationTests.java<br>
 ├── .env.example<br>
 ├── .gitattributes<br>
