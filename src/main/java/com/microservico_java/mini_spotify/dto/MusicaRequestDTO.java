@@ -8,6 +8,5 @@ public record MusicaRequestDTO(
         @NotBlank String titulo,
         @NotBlank String artista,
         @Min(1) int duracaoSegundos,
-        @NotNull Long generoId,
-        @NotNull Long albumId
+        @NotNull Long generoId
 ) {}

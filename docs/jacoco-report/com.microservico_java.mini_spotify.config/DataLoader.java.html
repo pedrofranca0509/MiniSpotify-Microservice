@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DataLoader.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">mini-spotify</a> &gt; <a href="index.source.html" class="el_package">com.microservico_java.mini_spotify.config</a> &gt; <span class="el_source">DataLoader.java</span></div><h1>DataLoader.java</h1><pre class="source lang-java linenums">package com.microservico_java.mini_spotify.config;
+
+import com.microservico_java.mini_spotify.model.*;
+import com.microservico_java.mini_spotify.repository.*;
+
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+
+@Configuration
+<span class="nc" id="L13">public class DataLoader {</span>
+
+    @Bean
+    CommandLineRunner loadData(
+            UsuarioRepository usuarioRepository,
+            GeneroRepository generoRepository,
+            MusicaRepository musicaRepository,
+            PlaylistRepository playlistRepository,
+            PasswordEncoder passwordEncoder
+    ) {
+<span class="nc" id="L23">        return args -&gt; {</span>
+
+            // Verifica e cria usuários
+<span class="nc" id="L26">            Usuario u1 = usuarioRepository.findByEmail(&quot;joao@email.com&quot;)</span>
+<span class="nc" id="L27">                    .orElseGet(() -&gt; {</span>
+<span class="nc" id="L28">                        Usuario novo = new Usuario();</span>
+<span class="nc" id="L29">                        novo.setNome(&quot;João Silva&quot;);</span>
+<span class="nc" id="L30">                        novo.setEmail(&quot;joao@email.com&quot;);</span>
+<span class="nc" id="L31">                        novo.setSenha(passwordEncoder.encode(&quot;senha123&quot;));</span>
+<span class="nc" id="L32">                        return usuarioRepository.save(novo);</span>
+                    });
+
+<span class="nc" id="L35">            Usuario u2 = usuarioRepository.findByEmail(&quot;maria@email.com&quot;)</span>
+<span class="nc" id="L36">                    .orElseGet(() -&gt; {</span>
+<span class="nc" id="L37">                        Usuario novo = new Usuario();</span>
+<span class="nc" id="L38">                        novo.setNome(&quot;Maria Souza&quot;);</span>
+<span class="nc" id="L39">                        novo.setEmail(&quot;maria@email.com&quot;);</span>
+<span class="nc" id="L40">                        novo.setSenha(passwordEncoder.encode(&quot;senha456&quot;));</span>
+<span class="nc" id="L41">                        return usuarioRepository.save(novo);</span>
+                    });
+
+            // Verifica e cria gêneros
+<span class="nc" id="L45">            Genero g1 = generoRepository.findByNome(&quot;Rock&quot;)</span>
+<span class="nc" id="L46">                    .orElseGet(() -&gt; {</span>
+<span class="nc" id="L47">                        Genero novo = new Genero();</span>
+<span class="nc" id="L48">                        novo.setNome(&quot;Rock&quot;);</span>
+<span class="nc" id="L49">                        return generoRepository.save(novo);</span>
+                    });
+
+<span class="nc" id="L52">            Genero g2 = generoRepository.findByNome(&quot;Pop&quot;)</span>
+<span class="nc" id="L53">                    .orElseGet(() -&gt; {</span>
+<span class="nc" id="L54">                        Genero novo = new Genero();</span>
+<span class="nc" id="L55">                        novo.setNome(&quot;Pop&quot;);</span>
+<span class="nc" id="L56">                        return generoRepository.save(novo);</span>
+                    });
+
+            // Verifica e cria músicas
+<span class="nc" id="L60">            Musica m1 = musicaRepository.findByTitulo(&quot;Bohemian Rhapsody&quot;)</span>
+<span class="nc" id="L61">                    .orElseGet(() -&gt; {</span>
+<span class="nc" id="L62">                        Musica nova = new Musica();</span>
+<span class="nc" id="L63">                        nova.setTitulo(&quot;Bohemian Rhapsody&quot;);</span>
+<span class="nc" id="L64">                        nova.setArtista(&quot;Queen&quot;);</span>
+<span class="nc" id="L65">                        nova.setDuracaoSegundos(354);</span>
+<span class="nc" id="L66">                        nova.setGenero(g1);</span>
+<span class="nc" id="L67">                        return musicaRepository.save(nova);</span>
+                    });
+
+<span class="nc" id="L70">            Musica m2 = musicaRepository.findByTitulo(&quot;Bad Guy&quot;)</span>
+<span class="nc" id="L71">                    .orElseGet(() -&gt; {</span>
+<span class="nc" id="L72">                        Musica nova = new Musica();</span>
+<span class="nc" id="L73">                        nova.setTitulo(&quot;Bad Guy&quot;);</span>
+<span class="nc" id="L74">                        nova.setArtista(&quot;Billie Eilish&quot;);</span>
+<span class="nc" id="L75">                        nova.setDuracaoSegundos(194);</span>
+<span class="nc" id="L76">                        nova.setGenero(g2);</span>
+<span class="nc" id="L77">                        return musicaRepository.save(nova);</span>
+                    });
+
+            // Verifica e cria playlists
+<span class="nc bnc" id="L81" title="All 2 branches missed.">            if (!playlistRepository.existsByNomeAndUsuario(&quot;Best of Rock&quot;, u1)) {</span>
+<span class="nc" id="L82">                Playlist p1 = new Playlist();</span>
+<span class="nc" id="L83">                p1.setNome(&quot;Best of Rock&quot;);</span>
+<span class="nc" id="L84">                p1.setUsuario(u1);</span>
+<span class="nc" id="L85">                p1.getMusicas().add(m1);</span>
+<span class="nc" id="L86">                playlistRepository.save(p1);</span>
+            }
+
+<span class="nc bnc" id="L89" title="All 2 branches missed.">            if (!playlistRepository.existsByNomeAndUsuario(&quot;Pop Songs&quot;, u2)) {</span>
+<span class="nc" id="L90">                Playlist p2 = new Playlist();</span>
+<span class="nc" id="L91">                p2.setNome(&quot;Pop Songs&quot;);</span>
+<span class="nc" id="L92">                p2.setUsuario(u2);</span>
+<span class="nc" id="L93">                p2.getMusicas().add(m2);</span>
+<span class="nc" id="L94">                playlistRepository.save(p2);</span>
+            }
+
+<span class="nc" id="L97">            System.out.println(&quot;Dados carregados com sucesso!&quot;);</span>
+<span class="nc" id="L98">        };</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.13.202504020838</span></div></body></html>
